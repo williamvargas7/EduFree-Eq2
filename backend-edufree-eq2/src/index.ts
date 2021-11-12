@@ -1,9 +1,9 @@
-import {ApplicationConfig, EdufreeApp} from './application';
+import {ApplicationConfig, BackendEdufreeEq2Application} from './application';
 
 export * from './application';
 
 export async function main(options: ApplicationConfig = {}) {
-  const app = new EdufreeApp(options);
+  const app = new BackendEdufreeEq2Application(options);
   await app.boot();
   await app.start();
 

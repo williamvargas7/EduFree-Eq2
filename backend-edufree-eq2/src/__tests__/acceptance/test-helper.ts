@@ -1,4 +1,4 @@
-import {EdufreeApp} from '../..';
+import {BackendEdufreeEq2Application} from '../..';
 import {
   createRestAppClient,
   givenHttpServerConfig,
@@ -14,7 +14,7 @@ export async function setupApplication(): Promise<AppWithClient> {
     // port: +process.env.PORT,
   });
 
-  const app = new EdufreeApp({
+  const app = new BackendEdufreeEq2Application({
     rest: restConfig,
   });
 
@@ -27,6 +27,6 @@ export async function setupApplication(): Promise<AppWithClient> {
 }
 
 export interface AppWithClient {
-  app: EdufreeApp;
+  app: BackendEdufreeEq2Application;
   client: Client;
 }
