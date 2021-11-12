@@ -104,3 +104,5 @@ export interface UsuarioRelations {
 }
 
 export type UsuarioWithRelations = Usuario & UsuarioRelations;
+
+// Comentario 
