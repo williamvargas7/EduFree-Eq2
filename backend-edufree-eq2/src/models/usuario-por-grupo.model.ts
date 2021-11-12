@@ -6,6 +6,12 @@ export class UsuarioPorGrupo extends Model {
     type: 'string',
     required: true,
   })
+  id: string;
+
+  @property({
+    type: 'string',
+    required: true,
+  })
   idGrupo: string;
 
   @property({
