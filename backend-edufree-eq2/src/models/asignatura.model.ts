@@ -1,4 +1,6 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, belongsTo, hasMany} from '@loopback/repository';
+import {ProgramaAcademico} from './programa-academico.model';
+import {Grupos} from './grupos.model';
 
 @model()
 export class Asignatura extends Entity {
@@ -39,6 +41,16 @@ export class Asignatura extends Entity {
   })
   Creditos: number;
 
+  @belongsTo(() => ProgramaAcademico)
+  programaAcademicoId: string;
+
+  @hasMany(() => Grupos)
+  grupos: Grupos[];
+
+  @property({
+    type: 'string',
+  })
+  gruposId?: string;
 
   constructor(data?: Partial<Asignatura>) {
     super(data);

@@ -1,4 +1,7 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, hasOne, hasMany} from '@loopback/repository';
+import {Asignatura} from './asignatura.model';
+import {Usuario} from './usuario.model';
+import {UsuarioPorGrupo} from './usuario-por-grupo.model';
 
 @model()
 export class Grupos extends Entity {
@@ -39,6 +42,16 @@ export class Grupos extends Entity {
   })
   idDocente: string;
 
+  @property({
+    type: 'string',
+  })
+  asignaturaId?: string;
+
+  @hasOne(() => Asignatura)
+  asignatura: Asignatura;
+
+  @hasMany(() => Usuario, {through: {model: () => UsuarioPorGrupo}})
+  usuarios: Usuario[];
 
   constructor(data?: Partial<Grupos>) {
     super(data);

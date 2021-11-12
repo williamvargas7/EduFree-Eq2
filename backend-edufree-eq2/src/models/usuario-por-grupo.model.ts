@@ -20,6 +20,15 @@ export class UsuarioPorGrupo extends Model {
   })
   calificacion: number;
 
+  @property({
+    type: 'string',
+  })
+  gruposId?: string;
+
+  @property({
+    type: 'string',
+  })
+  usuarioId?: string;
 
   constructor(data?: Partial<UsuarioPorGrupo>) {
     super(data);

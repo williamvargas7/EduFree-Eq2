@@ -1,4 +1,5 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Usuario} from './usuario.model';
 
 @model({settings: {strict: false}})
 export class Perfil extends Entity {
@@ -27,6 +28,13 @@ export class Perfil extends Entity {
   })
   modulos: string;
 
+  @property({
+    type: 'string',
+  })
+  usuarioId?: string;
+
+  @hasMany(() => Usuario)
+  usuarios: Usuario[];
   // Define well-known properties here
 
   // Indexer property to allow additional data
