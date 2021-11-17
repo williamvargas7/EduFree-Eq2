@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="lKOiRMlYlnAecIGtzMKI" name="Página-1">
-        <mxGraphModel dx="855" dy="470" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#F4F1DE" math="0" shadow="0">
+        <mxGraphModel dx="604" dy="332" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#F4F1DE" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -156,6 +156,12 @@
                 </mxCell>
                 <mxCell id="293" value="&lt;font color=&quot;#000000&quot; style=&quot;font-size: 17px;&quot;&gt;Notificacion&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fontSize=17;" parent="294" vertex="1">
                     <mxGeometry x="1949.1818181818182" y="1225.4705882352941" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="297" value="&lt;font color=&quot;#000000&quot; size=&quot;1&quot;&gt;&lt;b style=&quot;font-size: 18px&quot;&gt;PERMISOS&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;" vertex="1" parent="294">
+                    <mxGeometry x="1928.5500000000002" y="1002.0600000000001" width="110" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="296" value="&lt;font color=&quot;#000000&quot;&gt;&lt;b&gt;&lt;font style=&quot;font-size: 14px&quot;&gt;MODULOS&lt;/font&gt;&lt;/b&gt;&amp;nbsp;(Procesos del sistema): &lt;br&gt;Administracion de usuarios&lt;br&gt;Calificaciones, Reportes&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;" vertex="1" parent="294">
+                    <mxGeometry x="1280" y="1174.18" width="220" height="50" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
