@@ -72,6 +72,12 @@ export class Usuario extends Entity {
   })
   idPrograma: string;
 
+  @property({
+    type: 'date',
+    required: true,
+  })
+  fechaCreacion: string;
+
   @belongsTo(() => Perfil)
   perfilId: string;
 

@@ -1,4 +1,4 @@
-import {Entity, model, property, belongsTo} from '@loopback/repository';
+import {belongsTo, Entity, model, property} from '@loopback/repository';
 import {Asignatura} from './asignatura.model';
 
 @model()
@@ -27,6 +27,12 @@ export class Grupo extends Entity {
     required: true,
   })
   idDocente: string;
+
+  @property({
+    type: 'date',
+    required: true,
+  })
+  fechaCreacion: string;
 
   @belongsTo(() => Asignatura)
   asignaturaId: string;

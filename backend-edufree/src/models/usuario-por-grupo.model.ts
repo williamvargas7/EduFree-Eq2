@@ -10,6 +10,12 @@ export class UsuarioPorGrupo extends Entity {
   id?: string;
 
   @property({
+    type: 'date',
+    required: true,
+  })
+  fechaCreacion: string;
+
+  @property({
     type: 'number',
     required: true,
   })
