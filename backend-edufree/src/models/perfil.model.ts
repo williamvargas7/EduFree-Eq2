@@ -14,7 +14,7 @@ export class Perfil extends Entity {
     type: 'string',
     required: true,
   })
-  nombrePerfil: string;
+  nombre: string;
 
   @property({
     type: 'object',
@@ -23,10 +23,11 @@ export class Perfil extends Entity {
   permisos: object;
 
   @property({
-    type: 'date',
+    type: 'array',
+    itemType: 'string',
     required: true,
   })
-  fechaCreacion: string;
+  modulos: string[];
 
   @hasMany(() => Usuario)
   usuarios: Usuario[];

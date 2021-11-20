@@ -16,12 +16,6 @@ export class UsuarioPorGrupo extends Entity {
   calificacion: number;
 
   @property({
-    type: 'date',
-    required: true,
-  })
-  fechaCreacion: string;
-
-  @property({
     type: 'string',
   })
   usuarioId?: string;

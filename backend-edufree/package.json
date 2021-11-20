@@ -1,7 +1,7 @@
 {
   "name": "backend-edufree",
   "version": "0.0.1",
-  "description": "BackEnd del sistema de Calificaciones de la Universidad EDUFREE",
+  "description": "EduFree Eq2",
   "keywords": [
     "loopback-application",
     "loopback"

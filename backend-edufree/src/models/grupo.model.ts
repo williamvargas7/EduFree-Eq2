@@ -17,22 +17,16 @@ export class Grupo extends Entity {
   codigoGrupo: string;
 
   @property({
-    type: 'string',
-    required: true,
-  })
-  nombreGrupo: string;
-
-  @property({
     type: 'number',
     required: true,
   })
-  capacidad: number;
+  capacidadEstudiantes: number;
 
   @property({
-    type: 'date',
+    type: 'string',
     required: true,
   })
-  fechaCreacion: string;
+  idDocente: string;
 
   @belongsTo(() => Asignatura)
   asignaturaId: string;

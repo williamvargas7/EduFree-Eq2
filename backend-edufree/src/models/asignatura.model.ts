@@ -2,7 +2,7 @@ import {Entity, model, property, belongsTo, hasMany} from '@loopback/repository'
 import {ProgramaAcademico} from './programa-academico.model';
 import {Grupo} from './grupo.model';
 
-@model()
+@model({settings: {strict: false}})
 export class Asignatura extends Entity {
   @property({
     type: 'string',
@@ -21,19 +21,19 @@ export class Asignatura extends Entity {
     type: 'string',
     required: true,
   })
-  tipo: string;
+  componente: string;
+
+  @property({
+    type: 'number',
+    required: true,
+  })
+  cantidadCreditos: number;
 
   @property({
     type: 'string',
     required: true,
   })
   codigoAsignatura: string;
-
-  @property({
-    type: 'number',
-    required: true,
-  })
-  creditos: number;
 
   @property({
     type: 'date',
@@ -46,6 +46,11 @@ export class Asignatura extends Entity {
 
   @hasMany(() => Grupo)
   grupos: Grupo[];
+  // Define well-known properties here
+
+  // Indexer property to allow additional data
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [prop: string]: any;
 
   constructor(data?: Partial<Asignatura>) {
     super(data);

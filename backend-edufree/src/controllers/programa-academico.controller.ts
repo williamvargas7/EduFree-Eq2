@@ -26,7 +26,7 @@ export class ProgramaAcademicoController {
     public programaAcademicoRepository : ProgramaAcademicoRepository,
   ) {}
 
-  @post('/programas-acaademicos')
+  @post('/programas-academicos')
   @response(200, {
     description: 'ProgramaAcademico model instance',
     content: {'application/json': {schema: getModelSchemaRef(ProgramaAcademico)}},
@@ -47,7 +47,7 @@ export class ProgramaAcademicoController {
     return this.programaAcademicoRepository.create(programaAcademico);
   }
 
-  @get('/programas-acaademicos/count')
+  @get('/programas-academicos/count')
   @response(200, {
     description: 'ProgramaAcademico model count',
     content: {'application/json': {schema: CountSchema}},
@@ -58,7 +58,7 @@ export class ProgramaAcademicoController {
     return this.programaAcademicoRepository.count(where);
   }
 
-  @get('/programas-acaademicos')
+  @get('/programas-academicos')
   @response(200, {
     description: 'Array of ProgramaAcademico model instances',
     content: {
@@ -76,7 +76,7 @@ export class ProgramaAcademicoController {
     return this.programaAcademicoRepository.find(filter);
   }
 
-  @patch('/programas-acaademicos')
+  @patch('/programas-academicos')
   @response(200, {
     description: 'ProgramaAcademico PATCH success count',
     content: {'application/json': {schema: CountSchema}},
@@ -95,7 +95,7 @@ export class ProgramaAcademicoController {
     return this.programaAcademicoRepository.updateAll(programaAcademico, where);
   }
 
-  @get('/programas-acaademicos/{id}')
+  @get('/programas-academicos/{id}')
   @response(200, {
     description: 'ProgramaAcademico model instance',
     content: {
@@ -111,7 +111,7 @@ export class ProgramaAcademicoController {
     return this.programaAcademicoRepository.findById(id, filter);
   }
 
-  @patch('/programas-acaademicos/{id}')
+  @patch('/programas-academicos/{id}')
   @response(204, {
     description: 'ProgramaAcademico PATCH success',
   })
@@ -129,7 +129,7 @@ export class ProgramaAcademicoController {
     await this.programaAcademicoRepository.updateById(id, programaAcademico);
   }
 
-  @put('/programas-acaademicos/{id}')
+  @put('/programas-academicos/{id}')
   @response(204, {
     description: 'ProgramaAcademico PUT success',
   })
@@ -140,7 +140,7 @@ export class ProgramaAcademicoController {
     await this.programaAcademicoRepository.replaceById(id, programaAcademico);
   }
 
-  @del('/programas-acaademicos/{id}')
+  @del('/programas-academicos/{id}')
   @response(204, {
     description: 'ProgramaAcademico DELETE success',
   })

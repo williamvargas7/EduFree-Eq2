@@ -1,7 +1,7 @@
-import {Entity, model, property, hasMany, belongsTo} from '@loopback/repository';
+import {Entity, model, property, belongsTo, hasMany} from '@loopback/repository';
+import {Perfil} from './perfil.model';
 import {Grupo} from './grupo.model';
 import {UsuarioPorGrupo} from './usuario-por-grupo.model';
-import {Perfil} from './perfil.model';
 
 @model()
 export class Usuario extends Entity {
@@ -11,24 +11,6 @@ export class Usuario extends Entity {
     generated: true,
   })
   id?: string;
-
-  @property({
-    type: 'string',
-    required: true,
-  })
-  codigoUniversitario: string;
-
-  @property({
-    type: 'string',
-    required: true,
-  })
-  usuario: string;
-
-  @property({
-    type: 'string',
-    required: true,
-  })
-  contrasenia: string;
 
   @property({
     type: 'string',
@@ -46,7 +28,7 @@ export class Usuario extends Entity {
     type: 'string',
     required: true,
   })
-  tipoDocumento: string;
+  tipoIdentificacion: string;
 
   @property({
     type: 'string',
@@ -58,37 +40,43 @@ export class Usuario extends Entity {
     type: 'string',
     required: true,
   })
-  correoElectronico: string;
+  correo: string;
 
   @property({
     type: 'string',
     required: true,
   })
-  programaAcademico: string;
+  telefono: string;
 
   @property({
     type: 'string',
     required: true,
   })
-  idPerfil: string;
+  perfil: string;
 
   @property({
-    type: 'number',
+    type: 'string',
     required: true,
   })
-  creditos: number;
+  usuario: string;
 
   @property({
-    type: 'date',
+    type: 'string',
     required: true,
   })
-  fechaCreacion: string;
+  contrasenia: string;
 
-  @hasMany(() => Grupo, {through: {model: () => UsuarioPorGrupo}})
-  grupos: Grupo[];
+  @property({
+    type: 'string',
+    required: true,
+  })
+  idPrograma: string;
 
   @belongsTo(() => Perfil)
   perfilId: string;
+
+  @hasMany(() => Grupo, {through: {model: () => UsuarioPorGrupo}})
+  grupos: Grupo[];
 
   constructor(data?: Partial<Usuario>) {
     super(data);
