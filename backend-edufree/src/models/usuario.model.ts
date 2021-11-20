@@ -1,6 +1,6 @@
-import {Entity, model, property, belongsTo, hasMany} from '@loopback/repository';
-import {Perfil} from './perfil.model';
+import {belongsTo, Entity, hasMany, model, property} from '@loopback/repository';
 import {Grupo} from './grupo.model';
+import {Perfil} from './perfil.model';
 import {UsuarioPorGrupo} from './usuario-por-grupo.model';
 
 @model()
@@ -52,7 +52,7 @@ export class Usuario extends Entity {
     type: 'string',
     required: true,
   })
-  perfil: string;
+  rol: string;
 
   @property({
     type: 'string',
