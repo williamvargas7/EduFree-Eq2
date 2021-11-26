@@ -1,6 +1,6 @@
-import {Entity, model, property, belongsTo, hasMany} from '@loopback/repository';
-import {ProgramaAcademico} from './programa-academico.model';
+import {belongsTo, Entity, hasMany, model, property} from '@loopback/repository';
 import {Grupo} from './grupo.model';
+import {ProgramaAcademico} from './programa-academico.model';
 
 @model({settings: {strict: false}})
 export class Asignatura extends Entity {
@@ -21,6 +21,12 @@ export class Asignatura extends Entity {
     type: 'string',
     required: true,
   })
+  codigoAsignatura: string;
+
+  @property({
+    type: 'string',
+    required: true,
+  })
   componente: string;
 
   @property({
@@ -28,12 +34,6 @@ export class Asignatura extends Entity {
     required: true,
   })
   cantidadCreditos: number;
-
-  @property({
-    type: 'string',
-    required: true,
-  })
-  codigoAsignatura: string;
 
   @property({
     type: 'date',

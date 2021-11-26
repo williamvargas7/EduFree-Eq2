@@ -10,18 +10,6 @@ export class UsuarioPorGrupo extends Entity {
   id?: string;
 
   @property({
-    type: 'date',
-    required: true,
-  })
-  fechaCreacion: string;
-
-  @property({
-    type: 'number',
-    required: true,
-  })
-  calificacion: number;
-
-  @property({
     type: 'string',
   })
   usuarioId?: string;
@@ -30,6 +18,18 @@ export class UsuarioPorGrupo extends Entity {
     type: 'string',
   })
   grupoId?: string;
+
+  @property({
+    type: 'number',
+    required: true,
+  })
+  calificacion: number;
+
+  @property({
+    type: 'date',
+    required: true,
+  })
+  fechaCreacion: string;
 
   constructor(data?: Partial<UsuarioPorGrupo>) {
     super(data);

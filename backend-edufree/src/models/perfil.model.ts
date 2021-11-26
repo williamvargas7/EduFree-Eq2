@@ -14,7 +14,7 @@ export class Perfil extends Entity {
     type: 'string',
     required: true,
   })
-  nombre: string;
+  nombrePerfil: string;
 
   @property({
     type: 'object',

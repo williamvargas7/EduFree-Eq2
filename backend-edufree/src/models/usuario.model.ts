@@ -16,13 +16,13 @@ export class Usuario extends Entity {
     type: 'string',
     required: true,
   })
-  nombres: string;
+  nombresUsuario: string;
 
   @property({
     type: 'string',
     required: true,
   })
-  apellidos: string;
+  apellidosUsuario: string;
 
   @property({
     type: 'string',
@@ -40,13 +40,19 @@ export class Usuario extends Entity {
     type: 'string',
     required: true,
   })
-  correo: string;
+  correoElectronico: string;
 
   @property({
     type: 'string',
     required: true,
   })
   telefono: string;
+
+  @property({
+    type: 'string',
+    required: true,
+  })
+  programaAcademicoId: string;
 
   @property({
     type: 'string',
@@ -65,12 +71,6 @@ export class Usuario extends Entity {
     required: true,
   })
   contrasenia: string;
-
-  @property({
-    type: 'string',
-    required: true,
-  })
-  idPrograma: string;
 
   @property({
     type: 'date',
