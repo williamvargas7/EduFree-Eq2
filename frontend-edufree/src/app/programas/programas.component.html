@@ -1,0 +1,43 @@
+<!-- Content -->
+
+<main class="container-fluid wrapper m-0 p-0 px-0 mx-0">
+   <section class="m-2 p-5">
+      <div class="row flex-row justify-content-center">
+         <div class="col-md-4 flex-column flex-wrap" *ngFor="let i of listaProgramas">
+            <div class="card text-white card-has-bg click-col mb-3 flex-wrap"
+               style="background-image:url('{{i.imagen}}'); background-size: cover;">
+               <img class="card-img d-none" src="{{i.imagen}}">
+               <div class="card-img-overlay d-flex flex-column">
+                  <div class="card-body">
+                     <small class="card-meta mb-2">{{i.nivelAcademico}}</small>
+                     <h4 class="card-title mt-0 "><a class="text-white" herf="#">{{i.nombrePrograma}}</a></h4>
+                     <ul class="list-unstyled">
+                        <li>
+                           <small><i class="bi bi-box"></i> {{i.modalidad}}</small>
+                        </li>
+                        <li>
+                           <small><i class="bi bi-clock"></i> {{i.cantidadSemestres}} Semestres</small>
+                        </li>
+                        <li>
+                           <small><i class="bi bi-award"></i> {{i.cantidadCreditos}} Creditos</small>
+                        </li>
+                        <li>
+                           <small><i class="bi bi-coin"></i> {{i.costo}} COP</small>
+                        </li>
+                     </ul>
+                     <div class="d-grid gap-2 d-md-block cls-input">
+                        <button class="btn btn-outline-light m-3" name="" routerLink="/login"> Pensum </button>
+                        <button class="btn btn-outline-light m-3" name="" routerLink="/login"> Inscribete!</button>
+                     </div>
+                  </div>
+                  <div class="card-footer">
+                     <div class="">
+                        <small>{{i.descripcion}}</small>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+</main>

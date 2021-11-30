@@ -1,0 +1,66 @@
+<!-- Page Content -->
+<main class="container-fixed">
+   <section id="about" class="m-0 p-5 register">
+      <div class="row">
+         <div class="col-md-3 register-left">
+            <i class="bi bi-patch-plus"></i>
+            <h3>Emprende este Viaje</h3>
+            <p>Queremos acercar a los mejores estudiantes a nuestra Universidad y sus programas a través de
+               experiencias, atención e información de alta calidad.</p>
+            <input class="m-0" type="button" name="" value="Login" routerLink="/login" /><br />
+         </div>
+         <div class="col-md-9 register-right">
+            <div class="tab-content" id="myTabContent">
+               <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                  <h3 class="register-heading">Registrate</h3>
+                  <div class="row register-form">
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <input type="text" class="form-control" placeholder="Nombres" value="" />
+                        </div>
+                        <div class="form-group">
+                           <input type="text" class="form-control" placeholder="Apellidos" value="" />
+                        </div>
+                        <div class="form-group">
+                           <select class="form-control" placeholder="Tipo Identificacion">
+                              <option class="hidden" selected disabled>Tipo Identificacion</option>
+                              <option *ngFor="let i of listaProgramas">{{i.nombrePrograma}}</option>
+                           </select>
+                        </div>
+                        <div class="form-group">
+                           <input type="password" class="form-control" placeholder="Usuario" value="" />
+                        </div>
+                        <div class="form-group">
+                           <input type="password" class="form-control" placeholder="Contraseña" value="" />
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <input type="email" class="form-control" placeholder="Correo Electrónico" />
+                        </div>
+                        <div class="form-group">
+                           <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control"
+                              placeholder="Teléfono" value="" />
+                        </div>
+                        <div class="form-group">
+                           <input type="" class="form-control" placeholder="Número de Identificacion" value="" />
+                        </div>
+                        <div class="form-group">
+                           <select class="form-control" placeholder="Por favor selecciona el Programa Acádemico">
+                              <option class="hidden" selected disabled>Selecciona el Programa Acádemico
+                              </option>
+                              <option *ngFor="let i of listaProgramas">{{i.nombrePrograma}}</option>
+                           </select>
+                        </div>
+                        <div class="form-group">
+                           <input type="password" class="form-control" placeholder="Confirmar contraseña" value="" />
+                        </div>
+                        <input type="submit" class="btnRegister" value="Enviar Datos" />
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+</main>

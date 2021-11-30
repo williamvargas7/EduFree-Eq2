@@ -1,0 +1,57 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+.cls-logo{
+   width: 30px;
+   height: 30px;
+}
+
+.cls-login {
+
+   h1 {
+      text-align: start;
+   }
+
+   .cls-bg-login{
+      background-color: #162440
+   }
+
+   .cls-container-form {
+      background: #fff;
+      width: 320px;
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      -o-border-radius: 10px;
+   }
+
+   .cls-image-bg {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: auto;
+      z-index: -1;
+   }
+
+
+   i{
+      position: static;
+   }
+
+   .cls-header{
+      background-color: #F29F05;
+
+      button:hover{
+         background-color: #F25244;
+         border-color: #F25244;
+         color: #fff;
+
+      }
+   }
+
+   .cls-footer{
+      background-color: #1B1C29;
+   }
+
+}
