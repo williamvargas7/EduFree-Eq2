@@ -59,6 +59,12 @@ export class ProgramaAcademico extends Entity {
   imagen: string;
 
   @property({
+    type: 'string',
+    required: true,
+  })
+  descripcion: string;
+
+  @property({
     type: 'date',
     required: true,
   })

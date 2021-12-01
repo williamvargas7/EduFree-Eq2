@@ -21,12 +21,6 @@ export class Asignatura extends Entity {
     type: 'string',
     required: true,
   })
-  codigoAsignatura: string;
-
-  @property({
-    type: 'string',
-    required: true,
-  })
   componente: string;
 
   @property({
@@ -34,6 +28,12 @@ export class Asignatura extends Entity {
     required: true,
   })
   cantidadCreditos: number;
+
+  @property({
+    type: 'string',
+    required: true,
+  })
+  codigoAsignatura: string;
 
   @property({
     type: 'date',
