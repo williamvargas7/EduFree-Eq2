@@ -25,14 +25,14 @@ export class ProgramasComponent implements OnInit {
     this.backend.get('/programas-academicos').subscribe(
       {
         next: (data) => {
-          alert(data+"Datos Obtenidos correctamente");
+          //alert(data+"Datos Obtenidos correctamente");
           this.listaProgramas = data;
         },
         error: (err) => {
-          alert(err);
+          //alert(err);
         },
         complete: () => {
-          alert("Completado");
+          //alert("Completado");
         }
       }
     );

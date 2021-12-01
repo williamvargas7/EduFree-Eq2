@@ -69,7 +69,8 @@ import { ModificarGrupoComponent } from './layouts/crud-grupos/modificar-grupo/m
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
