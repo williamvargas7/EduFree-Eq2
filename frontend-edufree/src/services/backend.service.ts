@@ -26,7 +26,7 @@ export class BackendService {
   }
 
   getById(url: string, id: string): Observable<any> {
-    return this.http.get(this.rootUrl + url + id);
+    return this.http.get(this.rootUrl + url + id); 
   }
 
   putById(url: string, id: string, body: any): Observable<any> {
@@ -35,6 +35,12 @@ export class BackendService {
 
   patchById(url: string, id: string, body: any): Observable<any> {
     return this.http.patch(this.rootUrl + url + id, body);
+  }
+
+  autenticar(credenciales: string): Observable<any> {
+    const filter = '{"where":'+credenciales+'}';
+    const filterEncode=encodeURIComponent(filter);
+    return this.http.get(this.rootUrl + 'usuarios?filter='+filterEncode);
   }
 
 }
