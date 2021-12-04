@@ -49,12 +49,12 @@ export class LoginComponent implements OnInit {
           //alert('Credenciales Ingresadas: '+JSON.stringify(credentials));
           //alert('Credenciales Consultadas: '+JSON.stringify(data));
 
-           var usuario = JSON.stringify(data);
+           //var usuario = JSON.stringify(data);
            //alert(usuario);
            //alert(usuario.length);
            alert(data.length);
 
-          if (data.length>0){ 
+          if (data && data.length>0){ 
             alert('Usuario encontrado en la base de datos!!!');
             
           }else{
