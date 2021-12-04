@@ -1,0 +1,136 @@
+<div class="p-4">
+
+    <section class="d-flex flex-row mb-4">
+        <button type="button" class="btnAgregar btn-default me-3">Agregar</button>
+
+
+        <select class="custom-select Select" id="inputGroupSelect01">
+            <option disabled>Tipo Usuario...</option>
+            <option value="1">Administrador</option>
+            <option value="2">Docente</option>
+            <option value="3">Estudiante</option>
+        </select>
+
+    </section>
+
+    <section class="mb-5">
+        <form [formGroup]="formUsuario">
+            <div class="row register-form"[formGroup]="formUsuario">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Nombres" value="" formControlName="nombresUsuario"/>
+                        
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Apellidos" value="" formControlName="apellidosUsuario"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Tipo Identificacion" value="" formControlName="tipoIdentificacion" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Numero Identificacion" value="" formControlName="noIdentificacion"/>
+                    </div>
+
+                </div>
+                
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Correo Electrónico" formControlName="correoElectronico"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control"
+                            placeholder="Teléfono" value="" formControlName="telefono"/>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" placeholder="Por favor selecciona el Programa Acádemico">
+                            <option class="hidden" selected disabled>Selecciona el Programa Acádemico
+                            </option>
+                            <option></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="test" class="form-control" placeholder="Usuario" value="" formControlName="usuario"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Contraseña" value="" formControlName="contrasenia"/>
+                    </div>
+                    <input type="submit" class="btnRegister" value="Registrar Usuario" (click)="crearUsuario()"/>
+                </div>
+            </div>
+
+        </form>
+
+    </section>
+
+    <section>
+        <table class="table table-striped">
+
+            <thead>
+                <td>
+                    Nombres
+                </td>
+                <td>
+                    Apellidos
+                </td>
+                <td>
+                    Tipo Identificacion
+                </td>
+                <td>
+                    Numero Identificacion
+                </td>
+                <td>
+                    Correo Electrónico
+                </td>
+                <td>
+                    Programa Academico
+                </td>
+                <td>
+                    Usuario
+                </td>
+                <td>
+                    Contraseña
+                </td>
+                <td>
+                    Acciones
+                </td>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let list of listaUsuarios">
+                    <td>
+                        {{list.nombresUsuario}}
+                    </td>
+                    <td>
+                        {{list.apellidosUsuario}}
+                    </td>
+                    <td>
+                        {{list.tipoIdentificacion}}
+                    </td>
+                    <td>
+                        {{list.noIdentificacion}}
+                    </td>
+                    <td>
+                        {{list.correoElectronico}}
+                    </td>
+                    <td>
+                        {{list.programaAcademicoId}}
+                    </td>
+                    <td>
+                        {{list.usuario}}
+                    </td>
+                    <td>
+                        {{list.contrasenia}}
+                    </td>
+                    <td>
+                        <button type="button" class="btnAgregar btn-default me-3">Editar</button>
+                        <button type="button" class="btnAgregar btn-danger me-3">Eliminar</button>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+    </section>
+
+</div>

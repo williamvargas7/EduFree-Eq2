@@ -33,6 +33,7 @@ import { CrearGrupoComponent } from './layouts/crud-grupos/crear-grupo/crear-gru
 import { EliminarGrupoComponent } from './layouts/crud-grupos/eliminar-grupo/eliminar-grupo.component';
 import { LeerGrupoComponent } from './layouts/crud-grupos/leer-grupo/leer-grupo.component';
 import { ModificarGrupoComponent } from './layouts/crud-grupos/modificar-grupo/modificar-grupo.component';
+import { AdministradorUsuariosComponent } from './administrador-usuarios/administrador-usuarios.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,7 +64,8 @@ import { ModificarGrupoComponent } from './layouts/crud-grupos/modificar-grupo/m
     CrearGrupoComponent,
     EliminarGrupoComponent,
     LeerGrupoComponent,
-    ModificarGrupoComponent
+    ModificarGrupoComponent,
+    AdministradorUsuariosComponent
   ],
   imports: [
     BrowserModule,

@@ -43,4 +43,14 @@ export class BackendService {
     return this.http.get(this.rootUrl + 'usuarios?filter='+filterEncode);
   }
 
+  postRequest(controlador: string, datos: string): Observable<any> {
+
+    const url = this.rootUrl + '/' + controlador;
+    return this.http.post(
+      url,
+      datos, {
+      headers: { 'content-type': 'application/json'}
+    });
+  }
+
 }

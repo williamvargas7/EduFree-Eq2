@@ -7,6 +7,7 @@ import { MainLayoutComponent } from './layouts/main-layout/main-layout.component
 import { LoginComponent } from './login/login.component';
 import { InscripcionesComponent } from './inscripciones/inscripciones.component';
 import { ProgramasComponent } from './programas/programas.component';
+import { AdministradorUsuariosComponent } from './administrador-usuarios/administrador-usuarios.component';
 
 const routes: Routes = [
   {path: '', component: MainLayoutComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'inscripciones', component: InscripcionesComponent},
   {path: 'admin', component: UserLayoutComponent},
   {path: 'docente', component: UserLayoutComponent},
-  {path: 'estudiante', component: UserLayoutComponent}
+  {path: 'estudiante', component: UserLayoutComponent},
+  {path: 'administrador-usuarios', component: AdministradorUsuariosComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
