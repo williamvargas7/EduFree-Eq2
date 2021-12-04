@@ -1,3 +1,5 @@
+import { service } from '@loopback/core';
+
 import {
   Count,
   CountSchema,
@@ -16,20 +18,50 @@ import {
   del,
   requestBody,
   response,
+  HttpErrors,
 } from '@loopback/rest';
-import {Usuario} from '../models';
-import {UsuarioRepository} from '../repositories';
+import { Credenciales, Usuario } from '../models';
+import { UsuarioRepository } from '../repositories';
+import { SeguridadService } from '../services';
 
 export class UsuarioController {
   constructor(
     @repository(UsuarioRepository)
-    public usuarioRepository : UsuarioRepository,
-  ) {}
+    public usuarioRepository: UsuarioRepository,
+    @service(SeguridadService) 
+    public servicioSeguridad: SeguridadService
+  ) { }
+
+  @post('/login', {
+    responses: {
+      '200': {
+        description: 'Login Ok'
+      }
+    }
+  })
+  async login (
+    @requestBody() credenciales:Credenciales
+  ){
+    try {
+      const usuarioBuscado = await this.servicioSeguridad.ValidarUsuario(credenciales);
+      if(usuarioBuscado){
+          // Generar Token
+        const token =  this.servicioSeguridad.GenerarToken(usuarioBuscado);
+        return token;
+
+      }else{
+        throw new HttpErrors[401]('Datos no validos');
+      }
+      
+    } catch (error) {
+      throw new HttpErrors[401]('Datos no validos');
+    }
+  }
 
   @post('/usuarios')
   @response(200, {
     description: 'Usuario model instance',
-    content: {'application/json': {schema: getModelSchemaRef(Usuario)}},
+    content: { 'application/json': { schema: getModelSchemaRef(Usuario) } },
   })
   async create(
     @requestBody({
@@ -50,7 +82,7 @@ export class UsuarioController {
   @get('/usuarios/count')
   @response(200, {
     description: 'Usuario model count',
-    content: {'application/json': {schema: CountSchema}},
+    content: { 'application/json': { schema: CountSchema } },
   })
   async count(
     @param.where(Usuario) where?: Where<Usuario>,
@@ -65,7 +97,7 @@ export class UsuarioController {
       'application/json': {
         schema: {
           type: 'array',
-          items: getModelSchemaRef(Usuario, {includeRelations: true}),
+          items: getModelSchemaRef(Usuario, { includeRelations: true }),
         },
       },
     },
@@ -79,13 +111,13 @@ export class UsuarioController {
   @patch('/usuarios')
   @response(200, {
     description: 'Usuario PATCH success count',
-    content: {'application/json': {schema: CountSchema}},
+    content: { 'application/json': { schema: CountSchema } },
   })
   async updateAll(
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Usuario, {partial: true}),
+          schema: getModelSchemaRef(Usuario, { partial: true }),
         },
       },
     })
@@ -100,13 +132,13 @@ export class UsuarioController {
     description: 'Usuario model instance',
     content: {
       'application/json': {
-        schema: getModelSchemaRef(Usuario, {includeRelations: true}),
+        schema: getModelSchemaRef(Usuario, { includeRelations: true }),
       },
     },
   })
   async findById(
     @param.path.string('id') id: string,
-    @param.filter(Usuario, {exclude: 'where'}) filter?: FilterExcludingWhere<Usuario>
+    @param.filter(Usuario, { exclude: 'where' }) filter?: FilterExcludingWhere<Usuario>
   ): Promise<Usuario> {
     return this.usuarioRepository.findById(id, filter);
   }
@@ -120,7 +152,7 @@ export class UsuarioController {
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Usuario, {partial: true}),
+          schema: getModelSchemaRef(Usuario, { partial: true }),
         },
       },
     })
