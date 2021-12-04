@@ -3,7 +3,7 @@
    <section id="about" class="m-0 p-5 register">
       <div class="row">
          <div class="col-md-3 register-left">
-            <i class="bi bi-patch-plus"></i>
+            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
             <h3>Emprende este Viaje</h3>
             <p>Queremos acercar a los mejores estudiantes a nuestra Universidad y sus programas a través de
                experiencias, atención e información de alta calidad.</p>
@@ -15,44 +15,47 @@
                   <h3 class="register-heading">Registrate</h3>
                   <div class="row register-form">
                      <div class="col-md-6">
-                        <div class="form-group">
+                        <div class="form-group p-1">
                            <input type="text" class="form-control" placeholder="Nombres" value="" />
                         </div>
-                        <div class="form-group">
+                        <div class="form-group p-1">
                            <input type="text" class="form-control" placeholder="Apellidos" value="" />
                         </div>
-                        <div class="form-group">
-                           <select class="form-control" placeholder="Tipo Identificacion">
+                        <div class="form-group p-1">
+                           <select class="form-select" placeholder="Tipo Identificacion">
                               <option class="hidden" selected disabled>Tipo Identificacion</option>
-                              <option *ngFor="let i of listaProgramas">{{i.nombrePrograma}}</option>
+                              <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+                              <option value="Cedula de Ciudadania">Cedula de Ciudadania</option>
+                              <option value="Cedula de Extranjeria">Cedula de Extranjeria</option>
+                              <option value="Pasaporte">Pasaporte</option>
+                              <option value="Numero de Identificacion Personal">Numero de Identificacion Personal</option>
                            </select>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group p-1">
                            <input type="password" class="form-control" placeholder="Usuario" value="" />
                         </div>
-                        <div class="form-group">
+                        <div class="form-group p-1">
                            <input type="password" class="form-control" placeholder="Contraseña" value="" />
                         </div>
                      </div>
                      <div class="col-md-6">
-                        <div class="form-group">
+                        <div class="form-group p-1">
                            <input type="email" class="form-control" placeholder="Correo Electrónico" />
                         </div>
-                        <div class="form-group">
+                        <div class="form-group p-1">
                            <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control"
                               placeholder="Teléfono" value="" />
                         </div>
-                        <div class="form-group">
+                        <div class="form-group p-1">
                            <input type="" class="form-control" placeholder="Número de Identificacion" value="" />
                         </div>
-                        <div class="form-group">
-                           <select class="form-control" placeholder="Por favor selecciona el Programa Acádemico">
-                              <option class="hidden" selected disabled>Selecciona el Programa Acádemico
-                              </option>
-                              <option *ngFor="let i of listaProgramas">{{i.nombrePrograma}}</option>
+                        <div class="form-group p-1">
+                           <select class="form-select" placeholder="Por favor selecciona el Programa Acádemico">
+                              <option class="hidden" selected disabled>Selecciona el Programa Acádemico</option>
+                              <option *ngFor="let i of listaProgramas" value="{{i.nombrePrograma}}">{{i.nombrePrograma}}</option>
                            </select>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group p-1">
                            <input type="password" class="form-control" placeholder="Confirmar contraseña" value="" />
                         </div>
                         <input type="submit" class="btnRegister" value="Enviar Datos" />

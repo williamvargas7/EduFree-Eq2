@@ -2,7 +2,7 @@
 
 .btnAgregar {
   border-radius: 6px;
-  background-color: #fd7e14;
+  background-color: #f29f05;
   border: #212529;
   color: #fff;
   font-size: 18px;
@@ -12,9 +12,16 @@
   margin: 5px;
 }
 
-.Select {
+.btnAgregar:hover {
+  background-color: #fff;
+  color: #f29f05;
+}
+
+
+
+.select {
   border-radius: 6px;
-  background-color: #fd7e14;
+  background-color: #f29f05;
   border: #212529;
   color: #fff;
   font-size: 18px;

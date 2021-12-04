@@ -2,6 +2,28 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { BackendService } from 'src/services/backend.service';
 
+interface Usuario {
+  nombresUsuario: string,
+  apellidosUsuario: string,
+  tipoIdentificacion: string,
+  noIdentificacion: string,
+  correoElectronico: string,
+  telefono: string,
+  programaAcademicoId: string,
+  rol: string,
+  usuario: string,
+  contrasenia: string
+}
+
+interface Programa {
+  id: string,
+  nombrePrograma: string
+}
+
+interface Rol {
+  nombrePerfil: string
+}
+
 @Component({
   selector: 'app-administrador-usuarios',
   templateUrl: './administrador-usuarios.component.html',
@@ -10,29 +32,33 @@ import { BackendService } from 'src/services/backend.service';
 export class AdministradorUsuariosComponent implements OnInit {
 
   formUsuario: any;
-  listaUsuarios: any[] = [];
+  listaUsuarios: Usuario[] = [];
+  listaProgramas: Programa[] = [];
+  listaRoles: Rol[] = [];
 
   constructor(
     private fb: FormBuilder,
     private Backend: BackendService
-  ) {
-    this.formUsuario=this.fb.group(
+  )
   {
-    nombresUsuario: ['', Validators.required],
-    apellidosUsuario: ['',  Validators.required],
-    tipoIdentificacion: ['',  Validators.required],
-    noIdentificacion: ['',  Validators.required],
-    correoElectronico: ['',  Validators.compose([Validators.email,Validators.required])],
-    telefono: ['',  Validators.required],
-    programaAcademicoId: ['',  Validators.required],
-    rol: ['',  Validators.required],
-    usuario: ['',  Validators.required],
-    contrasenia: ['',  Validators.required]
-  }
-
+    this.formUsuario=this.fb.group(
+      {
+        nombresUsuario: ['', Validators.required],
+        apellidosUsuario: ['',  Validators.required],
+        tipoIdentificacion: ['',  Validators.required],
+        noIdentificacion: ['',  Validators.required],
+        correoElectronico: ['',  Validators.compose([Validators.email,Validators.required])],
+        telefono: ['',  Validators.required],
+        programaAcademicoId: ['',  Validators.required],
+        rol: ['',  Validators.required],
+        usuario: ['',  Validators.required],
+        contrasenia: ['',  Validators.required]
+      }
     );
     this.obtenerUsuarios();
-   }
+    this.obtenerProgramas();
+    this.obtenerRoles();
+  }
 
   ngOnInit(): void {
   }
@@ -51,6 +77,40 @@ export class AdministradorUsuariosComponent implements OnInit {
         },
         complete: () => {
           console.log('completo');
+        }
+      }
+    );
+  }
+
+  obtenerProgramas(): void {
+    this.Backend.get('/programas-academicos').subscribe(
+      {
+        next: (data) => {
+         // alert(data+"Datos Obtenidos correctamente");
+          this.listaProgramas = data;
+        },
+        error: (err) => {
+          //alert(err);
+        },
+        complete: () => {
+         // alert("Completado");
+        }
+      }
+    );
+  }
+
+  obtenerRoles(): void {
+    this.Backend.get('/perfiles').subscribe(
+      {
+        next: (data) => {
+         // alert(data+"Datos Obtenidos correctamente");
+          this.listaProgramas = data;
+        },
+        error: (err) => {
+          //alert(err);
+        },
+        complete: () => {
+         // alert("Completado");
         }
       }
     );
