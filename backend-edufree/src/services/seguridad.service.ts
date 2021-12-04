@@ -42,7 +42,7 @@ export class SeguridadService {
       {
         data: {
           nombre:usuario.nombresUsuario,
-          usuario:usuario.usuario
+          correo:usuario.correoElectronico
         }
       }, '2&%$##$%&%$&%');
       return token;

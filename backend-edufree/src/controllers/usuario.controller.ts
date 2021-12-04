@@ -28,7 +28,7 @@ export class UsuarioController {
   constructor(
     @repository(UsuarioRepository)
     public usuarioRepository: UsuarioRepository,
-    @service(SeguridadService) 
+    @service(SeguridadService)
     public servicioSeguridad: SeguridadService
   ) { }
 
@@ -39,20 +39,24 @@ export class UsuarioController {
       }
     }
   })
-  async login (
-    @requestBody() credenciales:Credenciales
-  ){
+  async login(
+    @requestBody() credenciales: Credenciales
+  ) {
     try {
       const usuarioBuscado = await this.servicioSeguridad.ValidarUsuario(credenciales);
-      if(usuarioBuscado){
-          // Generar Token
-        const token =  this.servicioSeguridad.GenerarToken(usuarioBuscado);
-        return token;
+      if (usuarioBuscado) {
+        // Generar Token
+        let token = await this.servicioSeguridad.GenerarToken(usuarioBuscado);
+        //return token;
+        return {
+          tk: token,
+          data: usuarioBuscado
+        };
 
-      }else{
+      } else {
         throw new HttpErrors[401]('Datos no validos');
       }
-      
+
     } catch (error) {
       throw new HttpErrors[401]('Datos no validos');
     }
