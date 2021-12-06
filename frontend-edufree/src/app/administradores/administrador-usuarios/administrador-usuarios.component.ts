@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { BackendService } from 'src/services/backend.service';
+import { Md5 } from 'ts-md5';
 
 interface Usuario {
   nombresUsuario: string,
@@ -118,6 +119,8 @@ export class AdministradorUsuariosComponent implements OnInit {
 
   crearUsuario():void{
     const usuarioNuevo =this.formUsuario.getRawValue();
+    const contraseniaEncriptada = Md5.hashStr(this.formUsuario.controls.contrasenia.value)
+    usuarioNuevo.contrasenia= contraseniaEncriptada;
     usuarioNuevo.fechaCreacion= "2021-12-04T06:09:59.036Z";
     usuarioNuevo.perfilId= "string";
     this.Backend.postRequest('usuarios',JSON.stringify(usuarioNuevo)).subscribe(
