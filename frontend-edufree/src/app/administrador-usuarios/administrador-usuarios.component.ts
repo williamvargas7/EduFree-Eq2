@@ -104,7 +104,7 @@ export class AdministradorUsuariosComponent implements OnInit {
       {
         next: (data) => {
          // alert(data+"Datos Obtenidos correctamente");
-          this.listaProgramas = data;
+          this.listaRoles = data;
         },
         error: (err) => {
           //alert(err);

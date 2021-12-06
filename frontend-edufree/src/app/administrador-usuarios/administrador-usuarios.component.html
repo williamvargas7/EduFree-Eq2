@@ -22,10 +22,12 @@
                     </div>
                     <div class="form-group py-1">
                         <input type="text" class="form-control" placeholder="Correo Electrónico" value=""
-                            formControlName="apellidosUsuario" />
+                            formControlName="correoElectronico" />
                     </div>
+
                     <div class="form-group py-1">
-                        <select class="form-select" placeholder="Tipo Identificacion">
+                        <select class="form-select" placeholder="Tipo Identificacion"
+                            formControlName="tipoIdentificacion">
                             <option class="hidden" selected disabled>Tipo Identificacion</option>
                             <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
                             <option value="Cedula de Ciudadania">Cedula de Ciudadania</option>
@@ -33,13 +35,16 @@
                             <option value="Pasaporte">Pasaporte</option>
                             <option value="Numero de Identificacion Personal">Numero de Identificacion Personal</option>
                         </select>
+
                     </div>
                     <div class="form-group py-1">
-                        <select class="form-select" placeholder="Por favor selecciona el Programa Acádemico">
+
+                        <select class="form-select" placeholder="Por favor selecciona el Programa Acádemico" formControlName="programaAcademicoId">
                             <option class="hidden" selected disabled>Selecciona el Programa Acádemico</option>
-                            <option *ngFor="let i of listaProgramas" value="{{i.nombrePrograma}}">{{i.nombrePrograma}}
-                            </option>
-                        </select>
+                            <option *ngFor="let i of listaProgramas" value="{{i.nombrePrograma}}">{{i.nombrePrograma}}</option>
+                         </select>
+
+
                     </div>
                     <div class="form-group py-1">
                         <input type="text" class="form-control" placeholder="id" value="id" readonly
@@ -50,7 +55,7 @@
                 <div class="col-md-6">
                     <div class="form-group py-1">
                         <input type="email" class="form-control" placeholder="Apellidos"
-                            formControlName="correoElectronico" />
+                            formControlName="apellidosUsuario" />
                     </div>
                     <div class="form-group py-1">
                         <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control"
@@ -61,7 +66,7 @@
                             formControlName="noIdentificacion" />
                     </div>
                     <div class="form-group py-1">
-                        <input type="test" class="form-control" placeholder="Usuario" value=""
+                        <input type="text" class="form-control" placeholder="Usuario" value=""
                             formControlName="usuario" />
                     </div>
                     <div class="form-group py-1">
@@ -87,8 +92,8 @@
                     <th scope="col">Nombres</th>
                     <th scope="col">Apellidos</th>
                     <th scope="col">Correo Electrónico</th>
-                    <th scope="col">Tipo Identificacion</th>
                     <th scope="col">Numero Identificacion</th>
+                    <th scope="col">Tipo Identificacion</th>
                     <th scope="col">Programa Acádemico</th>
                     <th scope="col">Usuario</th>
                     <th scope="col">Contraseña</th>
@@ -100,9 +105,9 @@
                 <tr *ngFor="let list of listaUsuarios">
                     <td> {{list.nombresUsuario}} </td>
                     <td> {{list.apellidosUsuario}} </td>
-                    <td> {{list.tipoIdentificacion}} </td>
-                    <td> {{list.noIdentificacion}} </td>
                     <td> {{list.correoElectronico}} </td>
+                    <td> {{list.noIdentificacion}} </td>
+                    <td> {{list.tipoIdentificacion}} </td>
                     <td> {{list.programaAcademicoId}} </td>
                     <td> {{list.usuario}} </td>
                     <td> {{list.contrasenia}} </td>
