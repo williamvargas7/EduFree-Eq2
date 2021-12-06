@@ -13,31 +13,12 @@ import { MainSidebarComponent } from './componentes/main-sidebar/main-sidebar.co
 import { MainNavbarComponent } from './componentes/main-navbar/main-navbar.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
-import { CrearAsignaturaComponent } from './layouts/crud-asignaturas/crear-asignatura/crear-asignatura.component';
-import { ModificarAsignaturaComponent } from './layouts/crud-asignaturas/modificar-asignatura/modificar-asignatura.component';
-import { LeerAsignaturaComponent } from './layouts/crud-asignaturas/leer-asignatura/leer-asignatura.component';
-import { EliminarAsignaturaComponent } from './layouts/crud-asignaturas/eliminar-asignatura/eliminar-asignatura.component';
-import { CrearDocenteComponent } from './layouts/crud-docentes/crear-docente/crear-docente.component';
-import { ModificarDocenteComponent } from './layouts/crud-docentes/modificar-docente/modificar-docente.component';
-import { LeerDocenteComponent } from './layouts/crud-docentes/leer-docente/leer-docente.component';
-import { EliminarDocenteComponent } from './layouts/crud-docentes/eliminar-docente/eliminar-docente.component';
-import { CrearEstudianteComponent } from './layouts/crud-estudiantes/crear-estudiante/crear-estudiante.component';
-import { EliminarEstudianteComponent } from './layouts/crud-estudiantes/eliminar-estudiante/eliminar-estudiante.component';
-import { LeerEstudianteComponent } from './layouts/crud-estudiantes/leer-estudiante/leer-estudiante.component';
-import { ModificarEstudianteComponent } from './layouts/crud-estudiantes/modificar-estudiante/modificar-estudiante.component';
-import { CrearProgramaComponent } from './layouts/crud-programas/crear-programa/crear-programa.component';
-import { EliminarProgramaComponent } from './layouts/crud-programas/eliminar-programa/eliminar-programa.component';
-import { LeerProgramaComponent } from './layouts/crud-programas/leer-programa/leer-programa.component';
-import { ModificarProgramaComponent } from './layouts/crud-programas/modificar-programa/modificar-programa.component';
-import { CrearGrupoComponent } from './layouts/crud-grupos/crear-grupo/crear-grupo.component';
-import { EliminarGrupoComponent } from './layouts/crud-grupos/eliminar-grupo/eliminar-grupo.component';
-import { LeerGrupoComponent } from './layouts/crud-grupos/leer-grupo/leer-grupo.component';
-import { ModificarGrupoComponent } from './layouts/crud-grupos/modificar-grupo/modificar-grupo.component';
-import { AdministradorUsuariosComponent } from './administrador-usuarios/administrador-usuarios.component';
-import { AdministradorProgramasComponent } from './administrador-programas/administrador-programas.component';
-import { AdministradorAsignaturasComponent } from './administrador-asignaturas/administrador-asignaturas.component';
-import { AdministradorGruposComponent } from './administrador-grupos/administrador-grupos.component';
-import { AdministradorCalificacionesComponent } from './administrador-calificaciones/administrador-calificaciones.component';
+import { AdministradorUsuariosComponent } from './administradores/administrador-usuarios/administrador-usuarios.component';
+import { AdministradorProgramasComponent } from './administradores/administrador-programas/administrador-programas.component';
+import { AdministradorAsignaturasComponent } from './administradores/administrador-asignaturas/administrador-asignaturas.component';
+import { AdministradorCalificacionesComponent } from './administradores/administrador-calificaciones/administrador-calificaciones.component';
+import { AdministradorGruposComponent } from './administradores/administrador-grupos/administrador-grupos.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,26 +30,6 @@ import { AdministradorCalificacionesComponent } from './administrador-calificaci
     MainNavbarComponent,
     MainLayoutComponent,
     UserLayoutComponent,
-    CrearAsignaturaComponent,
-    ModificarAsignaturaComponent,
-    LeerAsignaturaComponent,
-    EliminarAsignaturaComponent,
-    CrearDocenteComponent,
-    ModificarDocenteComponent,
-    LeerDocenteComponent,
-    EliminarDocenteComponent,
-    CrearEstudianteComponent,
-    EliminarEstudianteComponent,
-    LeerEstudianteComponent,
-    ModificarEstudianteComponent,
-    CrearProgramaComponent,
-    EliminarProgramaComponent,
-    LeerProgramaComponent,
-    ModificarProgramaComponent,
-    CrearGrupoComponent,
-    EliminarGrupoComponent,
-    LeerGrupoComponent,
-    ModificarGrupoComponent,
     AdministradorUsuariosComponent,
     AdministradorProgramasComponent,
     AdministradorAsignaturasComponent,
