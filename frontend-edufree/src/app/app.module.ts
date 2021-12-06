@@ -9,7 +9,6 @@ import { LoginComponent } from './login/login.component';
 import { ProgramasComponent } from './programas/programas.component';
 import { InscripcionesComponent } from './inscripciones/inscripciones.component';
 import { MainFooterComponent } from './componentes/main-footer/main-footer.component';
-import { MainSidebarComponent } from './componentes/main-sidebar/main-sidebar.component';
 import { MainNavbarComponent } from './componentes/main-navbar/main-navbar.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
@@ -26,7 +25,6 @@ import { AdministradorGruposComponent } from './administradores/administrador-gr
     ProgramasComponent,
     InscripcionesComponent,
     MainFooterComponent,
-    MainSidebarComponent,
     MainNavbarComponent,
     MainLayoutComponent,
     UserLayoutComponent,
