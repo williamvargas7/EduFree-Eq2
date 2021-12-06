@@ -3,12 +3,13 @@
         <h1 class="text-center h1">Administrador de usuarios</h1>
     </header>
 
-    <section class="d-flex flex-row justify-content-center py-2">
+    <section class="d-flex flex-row justify-content-center py-2" [formGroup]="formUsuario">
         <button type="button" class="btn cls-btnAgregar btn-default me-3 rounded-pill"><i class="bi bi-person-plus-fill"></i></button>
-        <select class="custom-select cls-select p-1 rounded-pill" id="inputGroupSelect01">
+        <select class="custom-select cls-select p-1 rounded-pill" formControlName="rol">
             <option class="hidden" selected disabled>Elige el Rol ... </option>
             <option *ngFor="let i of listaRoles" value="{{i.nombrePerfil}}">{{i.nombrePerfil}}</option>
         </select>
+
     </section>
 
     <section class="mb-5">
@@ -41,7 +42,7 @@
 
                         <select class="form-select rounded-pill" placeholder="Por favor selecciona el Programa Acádemico" formControlName="programaAcademicoId">
                             <option class="hidden" selected disabled>Selecciona el Programa Acádemico</option>
-                            <option *ngFor="let i of listaProgramas" value="{{i.nombrePrograma}}">{{i.nombrePrograma}}</option>
+                            <option *ngFor="let i of listaProgramas" value="{{i.id}}">{{i.nombrePrograma}}</option>
                         </select>
 
 
@@ -97,8 +98,10 @@
                     <th scope="col">Numero Identificacion</th>
                     <th scope="col">Tipo Identificacion</th>
                     <th scope="col">Programa Acádemico</th>
-                    <!-- <th scope="col">Usuario</th>
-                    <th scope="col">Contraseña</th> -->
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Rol</th>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Contraseña</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
@@ -111,8 +114,10 @@
                     <td> {{list.noIdentificacion}} </td>
                     <td> {{list.tipoIdentificacion}} </td>
                     <td> {{list.programaAcademicoId}} </td>
-                    <!-- <td> {{list.usuario}} </td>
-                    <td> {{list.contrasenia}} </td> -->
+                    <td> {{list.telefono}} </td>
+                    <td> {{list.rol}} </td>
+                    <td> {{list.usuario}} </td>
+                    <td> {{list.contrasenia}} </td>
                     <td>
                         <a type="button" class="btn btn-outline-dark me-1 rounded-pill"><i class="bi bi-pencil-square "></i></a>
                         <a type="button" class="btn btn-outline-danger me-1 rounded-pill"><i class="bi bi-trash"></i></a>

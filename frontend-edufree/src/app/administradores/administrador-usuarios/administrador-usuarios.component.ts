@@ -120,8 +120,6 @@ export class AdministradorUsuariosComponent implements OnInit {
     const usuarioNuevo =this.formUsuario.getRawValue();
     usuarioNuevo.fechaCreacion= "2021-12-04T06:09:59.036Z";
     usuarioNuevo.perfilId= "string";
-    usuarioNuevo.rol= "string";
-    usuarioNuevo.programaAcademicoId= "string";
     this.Backend.postRequest('usuarios',JSON.stringify(usuarioNuevo)).subscribe(
       {
         next: (data) => { 
