@@ -1,14 +1,37 @@
-<aside class="sidebar">
-   <div class="toggle-container">
-      <a href="#" class="burger js-menu-toggle active" data-toggle="collapse" data-target="#">
-         <span></span>
-      </a>
+<div id="container-fluid off-canvas-sidebar" class="bg-dark">
+
+   <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/2436/2436636.png" alt="John" class="img">
+      <h3>John Doe</h3>
+      <small class="title">CEO & Founder, Example</small>
+      <p><button class="">Perfil</button></p>
    </div>
-   <div class="side-inner">
-      <div class="profile">
-         <img src="" alt="" class="img-fluid">
-         <h3 class="name">Nombre Usuario</h3>
-         <small class="title">Rol</small>
-      </div>
+
+   <div class="p-1">
+      <h3 class="text-light font-weight-bold mb-0">Permisos</h3>
    </div>
-</aside>
+
+   <div class="p-1">
+      <a routerLink="/administrador-usuarios" routerLinkActive="active"
+         class="nav-link d-block text-light p-3 border-0">
+         <i class="bi bi-people-fill lead mx-2"></i>
+         Usuarios</a>
+
+      <a routerLink="/administrador-programas" routerLinkActive="active"
+         class="nav-link d-block text-light p-3 border-0">
+         <i class="bi bi-mortarboard-fill lead mx-2"></i>
+         Programas</a>
+
+      <a routerLink="/administrador-asignaturas" routerLinkActive="active"
+         class="nav-link d-block text-light p-3 border-0">
+         <i class="bi bi-journal-bookmark-fill lead mx-2"></i>
+         Asignaturas</a>
+      <a routerLink="/administrador-grupos" routerLinkActive="active" class="nav-link d-block text-light p-3 border-0">
+         <i class="bi bi-bounding-box-circles lead mx-2"></i>
+         Grupos</a>
+      <a routerLink="/administrador-calificaciones" routerLinkActive="active"
+         class="nav-link d-block text-light p-3 border-0">
+         <i class="bi bi-award-fill lead mx-2"></i>
+         Calificaciones</a>
+   </div>
+</div>

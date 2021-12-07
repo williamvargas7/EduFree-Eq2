@@ -1,10 +1,16 @@
 <div class="wrapper">
-   <div class="sidebar" data-color="red">
-      <app-user-sidebar></app-user-sidebar>
+   <div>
+      <app-user-navbar></app-user-navbar>
    </div>
    <div class="main-panel">
-      <app-user-navbar></app-user-navbar>
-      <router-outlet></router-outlet>
+
+      <div class="sidebar">
+         <app-user-sidebar></app-user-sidebar>
+      </div>
+
+      <div class="content container-fluid">
+         <router-outlet></router-outlet>
+      </div>
       <app-user-footer></app-user-footer>
    </div>
 </div>

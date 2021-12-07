@@ -64,7 +64,7 @@ export class AdministradorUsuariosComponent implements OnInit {
     this.obtenerUsuarios();
     this.obtenerProgramas();
     this.obtenerRoles();
-    this.limpiarFomrulario();
+    // this.limpiarFomrulario();
   }
 
   ngOnInit(): void {
@@ -145,7 +145,55 @@ export class AdministradorUsuariosComponent implements OnInit {
     );
   }
 
-  limpiarFomrulario():void{
-    this.formUsuario.Validators();
+  iniciarAdicion(): void {
+    this.modoCrud = 'adicion';
+  }
+
+  IniciarEdicion(usuario: any): void {
+    this.formUsuario.patchValue(usuario);
+    this.idUsuarioEdit = usuario.id;
+    this.modoCrud = 'edicion';
+  }
+
+  Editar(): void {
+    const nuevoUsuario = this.formUsuario.getRawValue();
+    const contraseniaEncriptada = Md5.hashStr(this.formUsuario.controls.contrasenia.value)
+    nuevoUsuario.contrasenia = contraseniaEncriptada;
+    this.Backend.patchRequest('usuarios', this.idUsuarioEdit, nuevoUsuario).subscribe(
+      {
+        next: (data) => {
+          this.obtenerUsuarios();
+          swal.fire('Felicidades', 'Usuario Editado', 'success');
+        },
+        error: (err) => {
+          console.log(err);
+        },
+        complete: () => {
+
+        }
+      }
+    );
+  }
+
+  Limpiar(): void {
+    this.formUsuario.reset();
+  }
+
+  EmininarUsuario(usuario: any) {
+    this.Backend.deleteRequest('usuarios', usuario.id).subscribe(
+      {
+        next: () => {
+          this.obtenerUsuarios();
+          swal.fire('!!!', 'Usuario Eliminado ' + usuario.nombresUsuario + ' ' + usuario.apellidosUsuario, 'success');
+        },
+        error: (err) => {
+          console.log(err);
+        },
+        complete: () => {
+
+        }
+      }
+
+    );
   }
 }

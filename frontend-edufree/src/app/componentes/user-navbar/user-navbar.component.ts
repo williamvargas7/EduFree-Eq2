@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef} from '@angular/core';
 
 @Component({
   selector: 'app-user-navbar',
@@ -6,9 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-navbar.component.scss']
 })
 export class UserNavbarComponent implements OnInit {
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
-
+  
 }
