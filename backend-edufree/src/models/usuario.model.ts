@@ -73,6 +73,12 @@ export class Usuario extends Entity {
   contrasenia: string;
 
   @property({
+    type: 'string',
+    required: true,
+  })
+  foto: string;
+
+  @property({
     type: 'date',
     required: true,
   })

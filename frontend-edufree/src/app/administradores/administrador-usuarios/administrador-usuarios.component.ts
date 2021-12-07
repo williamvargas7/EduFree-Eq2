@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { timestamp } from 'rxjs';
 import { BackendService } from 'src/services/backend.service';
 
 interface Usuario {
@@ -12,7 +13,8 @@ interface Usuario {
   programaAcademicoId: string,
   rol: string,
   usuario: string,
-  contrasenia: string
+  contrasenia: string,
+  fechaCreacion: string
 }
 
 interface Programa {
@@ -21,6 +23,7 @@ interface Programa {
 }
 
 interface Rol {
+  id: string,
   nombrePerfil: string
 }
 
@@ -58,6 +61,7 @@ export class AdministradorUsuariosComponent implements OnInit {
     this.obtenerUsuarios();
     this.obtenerProgramas();
     this.obtenerRoles();
+    this.limpiarFomrulario();
   }
 
   ngOnInit(): void {
@@ -68,7 +72,6 @@ export class AdministradorUsuariosComponent implements OnInit {
     this.Backend.get('usuarios').subscribe(
       {
         next: (data) => {
-
           this.listaUsuarios = data;
           console.log(data);
         },
@@ -117,26 +120,28 @@ export class AdministradorUsuariosComponent implements OnInit {
   }
 
   crearUsuario():void{
-    const usuarioNuevo =this.formUsuario.getRawValue();
-    usuarioNuevo.fechaCreacion= "2021-12-04T06:09:59.036Z";
-    usuarioNuevo.perfilId= "string";
+    const usuarioNuevo = this.formUsuario.getRawValue();
+    usuarioNuevo.fechaCreacion= timestamp;
+    usuarioNuevo.perfilId= usuarioNuevo.rol;
     usuarioNuevo.rol= "string";
     usuarioNuevo.programaAcademicoId= "string";
+
     this.Backend.postRequest('usuarios',JSON.stringify(usuarioNuevo)).subscribe(
       {
-        next: (data) => { 
-          
+        next: (data) => {
           console.log(data);
-          
         },
         error: (err) => {
           console.log(err);
         },
         complete: () => {
-          
+          console.log('complete');
         }
       }
     );
   }
 
+  limpiarFomrulario():void{
+    this.formUsuario.Validators();
+  }
 }

@@ -9,18 +9,23 @@ import { AdministradorProgramasComponent } from './administradores/administrador
 import { AdministradorAsignaturasComponent } from './administradores/administrador-asignaturas/administrador-asignaturas.component';
 import { AdministradorCalificacionesComponent } from './administradores/administrador-calificaciones/administrador-calificaciones.component';
 import { AdministradorGruposComponent } from './administradores/administrador-grupos/administrador-grupos.component';
-
+import { IndexComponent } from './index/index.component';
+import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
 
 const routes: Routes = [
-  {path: '', component: MainLayoutComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'programas-ofertados', component: ProgramasComponent},
-  {path: 'inscripciones', component: InscripcionesComponent},
-  {path: 'administrador-usuarios', component: AdministradorUsuariosComponent},
-  {path: 'administrador-programas', component: AdministradorProgramasComponent},
-  {path: 'administrador-asignaturas', component: AdministradorAsignaturasComponent},
-  {path: 'administrador-calificaciones', component: AdministradorCalificacionesComponent},
-  {path: 'administrador-grupos', component: AdministradorGruposComponent}
+  {path: '', component: MainLayoutComponent, children: [
+    {path: '', component: IndexComponent},
+    {path: 'login', component: LoginComponent},
+    {path: 'programas-ofertados', component: ProgramasComponent},
+    {path: 'inscripciones', component: InscripcionesComponent},
+  ]},
+  {path: 'administradores', component: UserLayoutComponent, children: [
+    {path: 'administrador-usuarios', component: AdministradorUsuariosComponent},
+    {path: 'administrador-programas', component: AdministradorProgramasComponent},
+    {path: 'administrador-asignaturas', component: AdministradorAsignaturasComponent},
+    {path: 'administrador-calificaciones', component: AdministradorCalificacionesComponent},
+    {path: 'administrador-grupos', component: AdministradorGruposComponent}
+  ]}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

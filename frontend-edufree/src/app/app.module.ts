@@ -12,11 +12,15 @@ import { MainFooterComponent } from './componentes/main-footer/main-footer.compo
 import { MainNavbarComponent } from './componentes/main-navbar/main-navbar.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
+import { UserNavbarComponent } from './componentes/user-navbar/user-navbar.component';
+import { UserFooterComponent } from './componentes/user-footer/user-footer.component';
+import { UserSidebarComponent } from './componentes/user-sidebar/user-sidebar.component';
 import { AdministradorUsuariosComponent } from './administradores/administrador-usuarios/administrador-usuarios.component';
 import { AdministradorProgramasComponent } from './administradores/administrador-programas/administrador-programas.component';
 import { AdministradorAsignaturasComponent } from './administradores/administrador-asignaturas/administrador-asignaturas.component';
 import { AdministradorCalificacionesComponent } from './administradores/administrador-calificaciones/administrador-calificaciones.component';
 import { AdministradorGruposComponent } from './administradores/administrador-grupos/administrador-grupos.component';
+import { IndexComponent } from './index/index.component';
 
 @NgModule({
   declarations: [
@@ -24,15 +28,19 @@ import { AdministradorGruposComponent } from './administradores/administrador-gr
     LoginComponent,
     ProgramasComponent,
     InscripcionesComponent,
+    MainLayoutComponent,
     MainFooterComponent,
     MainNavbarComponent,
-    MainLayoutComponent,
     UserLayoutComponent,
+    UserNavbarComponent,
+    UserFooterComponent,
+    UserSidebarComponent,
     AdministradorUsuariosComponent,
     AdministradorProgramasComponent,
     AdministradorAsignaturasComponent,
     AdministradorGruposComponent,
-    AdministradorCalificacionesComponent
+    AdministradorCalificacionesComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,

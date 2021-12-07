@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-navbar.component.scss']
 })
 export class UserNavbarComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit(): void {

@@ -46,10 +46,10 @@
 
 
                     </div>
-                    <div class="form-group py-1">
-                        <input type="text" class="form-control rounded-pill" placeholder="id" value="id" readonly
-                            formControlName="id" />
-                    </div>
+                    <select class="form-select rounded-pill" id="inputGroupSelect01">
+                        <option class="hidden" selected disabled>Elige el Rol ... </option>
+                        <option *ngFor="let i of listaRoles" value="{{i.nombrePerfil}}">{{i.nombrePerfil}}</option>
+                    </select>
                 </div>
 
                 <div class="col-md-6">
