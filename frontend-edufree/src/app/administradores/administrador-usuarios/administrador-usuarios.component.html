@@ -4,8 +4,9 @@
     </header>
 
     <section class="d-flex flex-row justify-content-center py-2" [formGroup]="formUsuario">
-        <button type="button" class="btn cls-btnAgregar btn-default me-3 rounded-pill"><i
+        <button type="button" class="btn cls-btnAgregar btn-default me-3 rounded-pill" (click)="iniciarAdicion()"><i
                 class="bi bi-person-plus-fill"></i></button>
+
         <select class="custom-select cls-select p-1 rounded-pill" formControlName="rol">
             <option class="hidden" selected disabled>Elige el Rol ... </option>
             <option *ngFor="let i of listaRoles" value="{{i.nombrePerfil}}">{{i.nombrePerfil}}</option>
@@ -79,18 +80,25 @@
                     <div class="form-group py-1">
                         <input type="password" id="contrasenia" class="form-control rounded-pill"
                             formControlName="contrasenia" placeholder="Contraseña" />
-                        
+
                     </div>
 
                 </div>
             </div>
 
             <div class="d-flex justify-content-center py-3">
-                <button type="submit" class="btn btn-outline-success rounded-pill mx-1 cls-button-1"
-                    value="Registrar Usuario" (click)="crearUsuario()">Registrar
+                <button *ngIf="modoCrud == 'adicion'" type="submit"
+                    class="btn btn-outline-success rounded-pill mx-1 cls-button-1" value="Registrar Usuario"
+                    (click)="crearUsuario()">Registrar Nuevo
                     Usuario</button>
+
+                <button *ngIf="modoCrud == 'edicion'" type="submit"
+                    class="btn btn-outline-success rounded-pill mx-1 cls-button-1" value="Editar Usuario"
+                    (click)="Editar()">Editar
+                    Usuario</button>
+
                 <button type="submit" class="btn btn-outline-danger rounded-pill mx-1 cls-button-1"
-                    value="Registrar Usuario">Limpiar</button>
+                    value="Registrar Usuario" (click)="Limpiar()">Limpiar</button>
             </div>
         </form>
     </section>
@@ -127,9 +135,10 @@
                     <td> {{list.usuario}} </td>
                     <td> {{list.contrasenia}} </td>
                     <td>
-                        <a type="button" class="btn btn-outline-dark me-1 rounded-pill"><i
-                                class="bi bi-pencil-square "></i></a>
-                        <a type="button" class="btn btn-outline-danger me-1 rounded-pill"><i
+                        <a type="button" class="btn btn-outline-dark me-1 rounded-pill"
+                            (click)="IniciarEdicion(list)"><i class="bi bi-pencil-square "></i></a>
+
+                        <a type="button" class="btn btn-outline-danger me-1 rounded-pill" (click)="EmininarUsuario(list)"><i
                                 class="bi bi-trash"></i></a>
                     </td>
                 </tr>
