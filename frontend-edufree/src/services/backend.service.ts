@@ -43,8 +43,7 @@ export class BackendService {
     return this.http.get(this.rootUrl + 'usuarios?filter='+filterEncode);
   }
 
-  postRequest(controlador: string, datos: string): Observable<any> {
-
+  postRequest(controlador: string,datos: string): Observable<any> {
     const url = this.rootUrl + '/' + controlador;
     return this.http.post(
       url,
@@ -52,5 +51,23 @@ export class BackendService {
       headers: { 'content-type': 'application/json'}
     });
   }
+
+  patchRequest(controlador: string, id:string, datos: string): Observable<any> {
+    const url = this.rootUrl + '/' + controlador+'/'+id;
+    return this.http.patch(
+      url,
+      datos, {
+      headers: { 'content-type': 'application/json'}
+    });
+  }
+
+  deleteRequest(controlador: string, id:string): Observable<any> {
+    const url = this.rootUrl + '/' + controlador+'/'+id;
+    return this.http.delete(
+      url,{
+      headers: { 'content-type': 'application/json'}
+    });
+  }
+
 
 }

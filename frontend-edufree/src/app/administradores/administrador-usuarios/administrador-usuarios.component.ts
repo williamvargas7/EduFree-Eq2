@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { timestamp } from 'rxjs';
 import { BackendService } from 'src/services/backend.service';
+import { Md5 } from 'ts-md5';
+import swal from 'sweetalert2';
 
 interface Usuario {
   nombresUsuario: string,
@@ -38,24 +40,25 @@ export class AdministradorUsuariosComponent implements OnInit {
   listaUsuarios: Usuario[] = [];
   listaProgramas: Programa[] = [];
   listaRoles: Rol[] = [];
+  idUsuarioEdit = '';
+  modoCrud = 'adicion';
 
   constructor(
     private fb: FormBuilder,
     private Backend: BackendService
-  )
-  {
-    this.formUsuario=this.fb.group(
+  ) {
+    this.formUsuario = this.fb.group(
       {
         nombresUsuario: ['', Validators.required],
-        apellidosUsuario: ['',  Validators.required],
-        tipoIdentificacion: ['',  Validators.required],
-        noIdentificacion: ['',  Validators.required],
-        correoElectronico: ['',  Validators.compose([Validators.email,Validators.required])],
-        telefono: ['',  Validators.required],
-        programaAcademicoId: ['',  Validators.required],
-        rol: ['',  Validators.required],
-        usuario: ['',  Validators.required],
-        contrasenia: ['',  Validators.required]
+        apellidosUsuario: ['', Validators.required],
+        tipoIdentificacion: ['', Validators.required],
+        noIdentificacion: ['', Validators.required],
+        correoElectronico: ['', Validators.compose([Validators.email, Validators.required])],
+        telefono: ['', Validators.required],
+        programaAcademicoId: ['', Validators.required],
+        rol: ['', Validators.required],
+        usuario: ['', Validators.required],
+        contrasenia: ['', Validators.required]
       }
     );
     this.obtenerUsuarios();
@@ -89,14 +92,14 @@ export class AdministradorUsuariosComponent implements OnInit {
     this.Backend.get('/programas-academicos').subscribe(
       {
         next: (data) => {
-         // alert(data+"Datos Obtenidos correctamente");
+          // alert(data+"Datos Obtenidos correctamente");
           this.listaProgramas = data;
         },
         error: (err) => {
           //alert(err);
         },
         complete: () => {
-         // alert("Completado");
+          // alert("Completado");
         }
       }
     );
@@ -106,14 +109,14 @@ export class AdministradorUsuariosComponent implements OnInit {
     this.Backend.get('/perfiles').subscribe(
       {
         next: (data) => {
-         // alert(data+"Datos Obtenidos correctamente");
+          // alert(data+"Datos Obtenidos correctamente");
           this.listaRoles = data;
         },
         error: (err) => {
           //alert(err);
         },
         complete: () => {
-         // alert("Completado");
+          // alert("Completado");
         }
       }
     );
@@ -138,6 +141,7 @@ export class AdministradorUsuariosComponent implements OnInit {
           console.log('complete');
         }
       }
+
     );
   }
 
