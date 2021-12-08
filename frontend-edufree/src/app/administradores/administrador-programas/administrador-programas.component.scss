@@ -1,0 +1,33 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+.cls-btnAgregar {
+   border-radius: 6px;
+   background-color: #f29f05;
+   border: #212529;
+   color: #fff;
+   font-size: 18px;
+   width: 10%;
+   height: 40px;
+   cursor: pointer;
+   margin: 5px;
+}
+
+.btnAgregar:hover {
+   background-color: #fff;
+   color: #f29f05;
+}
+
+.cls-select {
+   background-color: #ffffff;
+   color: #f29f05;
+   width: 20%;
+   height: 40px;
+}
+
+.cls-button-1 {
+   width: 20% !important;
+}
+
+select:invalid { 
+   color: gray; 
+}

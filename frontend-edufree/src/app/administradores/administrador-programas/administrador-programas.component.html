@@ -1,1 +1,133 @@
-<p>administrador-programas works!</p>
+<main class="container-fluid p-5">
+   <header class="container-fluid header m-0">
+      <h1 class="text-center h1">Administrador de Programas</h1>
+   </header>
+
+   <section class="text-center py-2">
+      <button type="button" class="btn cls-btnAgregar btn-default me-3 rounded-pill">
+         <i class="bi bi-node-plus w-100"></i>
+      </button>
+   </section>
+
+   <section class="mb-5">
+      <form [formGroup]="formProgramas">
+         <div class="row register-form">
+
+            <div class="col-md-6">
+               <div class="form-group py-1">
+                  <input type="text" class="form-control rounded-pill" formControlName="nombrePrograma"
+                     placeholder="Nombre del programa" required/>
+               </div>
+               <div class="form-group py-1">
+                  <input type="text" class="form-control rounded-pill" formControlName="cantidadSemestres"
+                     placeholder="Semestres" required/>
+               </div>
+               <div class="form-group py-1">
+                  <select class="form-select rounded-pill" placeholder="Nivel Académico" required formControlName="nivelAcademico">
+                     <option value="" disabled selected hidden>Nivel Académico</option>
+                     <option value="Técnico Profesional">Técnico Profesional</option>
+                     <option value="Tecnologíca">Tecnologíca</option>
+                     <option value="Pregrado">Pregrado</option>
+                     <option value="Especiialización">Posgrado: Especialización</option>
+                     <option value="Maestria">Posgrado: Maestria</option>
+                     <option value="Doctorado">Posgrado: Doctorado</option>
+                     <option value="Curso">Formación Continuada: Cursos</option>
+                     <option value="Diplomado">Formación Continuada: Diplomado</option>
+                  </select>
+               </div>
+               <div class="form-group py-1">
+                  <input type="text" class="form-control rounded-pill" formControlName="costo" 
+                     placeholder="Costo" required/>
+               </div>
+               <div class="form-group py-1">
+                  <input type="text" class="form-control rounded-pill" formControlName="descripcion" 
+                     placeholder="Descripción" required/>
+               </div>
+            </div>
+
+            <div class="col-md-6">
+               <div class="form-group py-1">
+                  <input type="text" class="form-control rounded-pill" formControlName="codigoPrograma"
+                     placeholder="Código del programa" required/>
+               </div>
+               <div class="form-group py-1">
+                  <input type="text" class="form-control rounded-pill" formControlName="cantidadCreditos"
+                     placeholder="Créditos" required/>
+               </div>
+               <div class="form-group py-1">
+                  <select class="form-select rounded-pill" required placeholder="Modalidad" formControlName="modalidad">
+                     <option value="" disabled selected hidden>Modalidad</option>
+                     <option value="Presencial">Presencial</option>
+                     <option value="Semipresencial">Semipresencial</option>
+                     <option value="Virtual">Virtual</option>
+                  </select>
+               </div>
+               <div class="form-group py-1">
+                  <input type="text" class="form-control rounded-pill" formControlName="imagen"
+                     placeholder="Imágen" required/>
+               </div>
+               <div class="form-group py-1">
+                  <input readonly type="text" class="form-control rounded-pill" formControlName="fechaCreacion"
+                     placeholder="Fecha Creación" value=""/>
+               </div>
+            </div>
+
+         </div>
+
+         <div class="row justify-content-center py-3">
+            <button (click)="postPrograma()"
+               class="btn btn-outline-success rounded-pill mx-1 cls-button-1">
+               Registrar Usuario
+            </button>
+            <button (click)="patchPrograma()"
+               class="btn btn-outline-success rounded-pill mx-1 cls-button-1"               >
+               Editor Usuario
+            </button>
+            <button class="btn btn-outline-danger rounded-pill mx-1 cls-button-1">
+               Limpiar
+            </button>
+         </div>
+      </form>
+   </section>
+
+   <section class="m-0 p-0">
+      <table class="table table-responsive-dark table-hover table-sm">
+         <thead>
+            <tr>
+               <th>Nombres</th>
+               <th>Código</th>
+               <th>Semestres</th>
+               <th>Créditos</th>
+               <th>Nivel Académico</th>
+               <th>Modalidad</th>
+               <th>Acciones</th>
+            </tr>
+         </thead>
+
+         <tbody>
+            <tr *ngFor="let list of listaProgramas">
+               <td scope="col">{{list.nombrePrograma}}</td>
+               <td scope="col">{{list.codigoPrograma}}</td>
+               <td scope="col">{{list.cantidadSemestres}}</td>
+               <td scope="col">{{list.cantidadCreditos}}</td>
+               <td scope="col">{{list.nivelAcademico}}</td>
+               <td scope="col">{{list.modalidad}}</td>
+               <td scope="col">
+                  <a type="button" class="btn btn-outline-warning me-1 rounded-pill" >
+                     <i class="bi bi-pencil-square"></i>
+                  </a>
+                  <a type="button" class="btn btn-outline-danger me-1 rounded-pill" 
+                     (click)="deletePrograma(list)">
+                     <i class="bi bi-trash"></i>
+                  </a>
+                  <a type="button" class="btn btn-outline-dark me-1 rounded-pill">
+                     Asignaturas
+                  </a>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+   </section>
+</main>
+
+<!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus dicta mollitia ipsam eius nemo. Quibusdam, sint officiis illum in explicabo deleniti maxime, facere vel at aut quisquam voluptates vitae nulla. -->

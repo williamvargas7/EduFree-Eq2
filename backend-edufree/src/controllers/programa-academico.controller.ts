@@ -44,6 +44,9 @@ export class ProgramaAcademicoController {
     })
     programaAcademico: Omit<ProgramaAcademico, 'id'>,
   ): Promise<ProgramaAcademico> {
+    // console.log(JSON.stringify(programaAcademico));
+    // programaAcademico.fechaCreacion = new Date().toString();
+    // console.log(JSON.stringify(programaAcademico));
     return this.programaAcademicoRepository.create(programaAcademico);
   }
 
