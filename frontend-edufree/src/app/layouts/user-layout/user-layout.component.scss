@@ -1,0 +1,50 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+.cls-logo {
+    width: 30px;
+    height: 30px;
+}
+
+.cls-navbar {
+    h6 {
+        font-size: 20px;
+        color: #fff;
+    }
+}
+
+.cls-footer {
+    bottom: 0;
+    width: 100%;
+}
+
+.cls-body-app {
+    width: 80%;
+    
+}
+
+.cls-sidebar-app {
+    height: calc(100vh - 110px);
+    transform: translateX(-100%);
+}
+
+.cls-animate-sidebar-open {
+    animation: cls-ani 0.3s linear forwards;
+    -webkit-animation: cls-ani 0.3s linear forwards;
+}
+
+@keyframes cls-ani {
+    0% {
+        transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+        -moz-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+        -o-transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0%);
+        -webkit-transform: translateX(0%);
+        -moz-transform: translateX(0%);
+        -ms-transform: translateX(0%);
+        -o-transform: translateX(0%);
+    }
+}

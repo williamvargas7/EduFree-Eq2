@@ -1,37 +1,53 @@
-<div id="container-fluid off-canvas-sidebar" class="bg-dark">
-
-   <div class="card">
-      <img src="https://cdn-icons-png.flaticon.com/512/2436/2436636.png" alt="John" class="img">
-      <h3>John Doe</h3>
-      <small class="title">CEO & Founder, Example</small>
-      <p><button class="">Perfil</button></p>
+<section class="">
+   <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
+      <div class="dropdown">
+         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+            <strong>mdo</strong>
+         </a>
+         <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+            <li><a class="dropdown-item" href="#">New project...</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li>
+               <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+         </ul>
+      </div>
+      <hr>
+      <ul class="nav nav-pills flex-column mb-auto">
+         <li class="nav-item">
+            <a  routerLink="/administradores/administrador-usuarios"  class="nav-link text-white" aria-current="page">
+               <i class="bi bi-people-fill mx-1"></i>
+               Usuarios
+            </a>
+         </li>
+         <li>
+            <a  routerLink="/administradores/administrador-programas" class="nav-link text-white">
+               <i class="bi bi-mortarboard-fill mx-1"></i>
+               Programas Acádemicos
+            </a>
+         </li>
+         <li>
+            <a  routerLink="/administradores/administrador-asignaturas"  class="nav-link text-white">
+               <i class="bi bi-menu-button-wide-fill mx-1"></i>
+               Asignaturas
+            </a>
+         </li>
+         <li>
+            <a  routerLink="/administradores/administrador-grupos"  class="nav-link text-white">
+               <i class="bi bi-collection-fill mx-1"></i>
+               Grupos
+            </a>
+         </li>
+         <li>
+            <a routerLink="/administradores/administrador-calificaciones"  class="nav-link text-white">
+               <i class="bi bi-card-checklist mx-1"></i>
+               Calificaciones
+            </a>
+         </li>
+      </ul>
    </div>
-
-   <div class="p-1">
-      <h3 class="text-light font-weight-bold mb-0">Permisos</h3>
-   </div>
-
-   <div class="p-1">
-      <a routerLink="/administradores/administrador-usuarios" routerLinkActive="active"
-         class="nav-link d-block text-light p-3 border-0">
-         <i class="bi bi-people-fill lead mx-2"></i>
-         Usuarios</a>
-
-      <a routerLink="/administradores/administrador-programas" routerLinkActive="active"
-         class="nav-link d-block text-light p-3 border-0">
-         <i class="bi bi-mortarboard-fill lead mx-2"></i>
-         Programas</a>
-
-      <a routerLink="/administradores/administrador-asignaturas" routerLinkActive="active"
-         class="nav-link d-block text-light p-3 border-0">
-         <i class="bi bi-journal-bookmark-fill lead mx-2"></i>
-         Asignaturas</a>
-      <a routerLink="/administradores/administrador-grupos" routerLinkActive="active" class="nav-link d-block text-light p-3 border-0">
-         <i class="bi bi-bounding-box-circles lead mx-2"></i>
-         Grupos</a>
-      <a routerLink="/administradores/administrador-calificaciones" routerLinkActive="active"
-         class="nav-link d-block text-light p-3 border-0">
-         <i class="bi bi-award-fill lead mx-2"></i>
-         Calificaciones</a>
-   </div>
-</div>
+</section>
