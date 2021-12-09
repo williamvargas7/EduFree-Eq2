@@ -26,7 +26,7 @@ export class BackendService {
   }
 
   getById(url: string, id: string): Observable<any> {
-    return this.http.get(this.rootUrl + url + id); 
+    return this.http.get(this.rootUrl + url + id);
   }
 
   putById(url: string, id: string, body: any): Observable<any> {
@@ -44,7 +44,7 @@ export class BackendService {
   }
 
   postRequest(controlador: string,datos: string): Observable<any> {
-    const url = this.rootUrl + '/' + controlador;
+    const url = this.rootUrl + controlador;
     return this.http.post(
       url,
       datos, {

@@ -80,6 +80,9 @@ export class UsuarioController {
     })
     usuario: Omit<Usuario, 'id'>,
   ): Promise<Usuario> {
+    //console.log(JSON.stringify(usuario));
+    usuario.fechaCreacion = new Date().toString();
+    //console.log(JSON.stringify(usuario));
     return this.usuarioRepository.create(usuario);
   }
 
