@@ -1,16 +1,25 @@
-<div class="wrapper">
-   <div>
-      <app-user-navbar></app-user-navbar>
-   </div>
-   <div class="main-panel">
+<main class="container-fluid p-0">
+   <nav class="cls-navbar">
+      <div class="">
+         <button (click)="toggleSideBar()" class="btn btn-primary">sidebar</button>
+      </div>
+      <div div class="">
+         <app-user-navbar></app-user-navbar>
+      </div>
+   </nav>
 
-      <div class="sidebar">
+   <section class="cls-body-container d-flex flex-row">
+
+      <div class="cls-sidebar-app" [ngClass]="{'cls-animate-sidebar-open': openSideBar}">
          <app-user-sidebar></app-user-sidebar>
       </div>
 
-      <div class="content container-fluid">
+      <div class="cls-body-app">
          <router-outlet></router-outlet>
       </div>
+   </section>
+
+   <footer class="cls-footer">
       <app-user-footer></app-user-footer>
-   </div>
-</div>
+   </footer>
+</main>

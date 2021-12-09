@@ -12,5 +12,5 @@ export class UserNavbarComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+
 }

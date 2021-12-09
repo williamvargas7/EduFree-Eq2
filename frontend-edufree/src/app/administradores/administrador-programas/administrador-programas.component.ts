@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { BackendService } from 'src/services/backend.service';
 import Swal from 'sweetalert2';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
 
 
 interface Programa {
@@ -25,11 +27,21 @@ interface Programa {
 export class AdministradorProgramasComponent implements OnInit {
   listaProgramas: Programa[] = [];
   formProgramas: any;
-  // estadoCRUD!: 'Agregar';
+  estadoCRUD!: 'Agregar';
   idProgramaActual!: '';
-
+  rows = [];
+  columns = [
+    { name: 'Nombre Programa' },
+    { name: 'Código Programa' },
+    { name: 'Semestres' },
+    { name: 'Creditos' },
+    { name: 'Nivel Académico' },
+    { name: 'Modalidad' },
+    { name: 'Acciones' },
+  ];
   constructor(private fb: FormBuilder,private backend: BackendService){
     this.getProgramas();
+    this.getRows();
     this.formProgramas = this.fb.group({
       nombrePrograma: ['', Validators.required],
       codigoPrograma: ['', Validators.required],
@@ -63,13 +75,13 @@ export class AdministradorProgramasComponent implements OnInit {
     );
   }
 
-  // iniciarAgregacion() {
-  //   this.estadoCRUD = 'Agregar';
-  // }
+  iniciarAgregacion() {
+    this.estadoCRUD = 'Agregar';
+  }
 
   postPrograma() {
     const programaNuevo = this.formProgramas.getRawValue();
-    programaNuevo['fechaCreacion'] = new Date().toString();
+    programaNuevo['fechaCreacion'] = new Date();
     programaNuevo['cantidadCreditos'] = parseInt(programaNuevo['cantidadCreditos']);
     programaNuevo['cantidadSemestres'] = parseInt(programaNuevo['cantidadCreditos']);
     programaNuevo['costo'] = parseInt(programaNuevo['costo']);
@@ -91,11 +103,11 @@ export class AdministradorProgramasComponent implements OnInit {
     );
   }
 
-  // iniciarEdicion(programa: any): void {
-  //   this.formProgramas.patchValue(programa)
-  //   this.idProgramaActual = programa.id;
-  //   this.estadoCRUD = 'Actualizar';
-  // }
+  iniciarEdicion(programa: any): void {
+    this.formProgramas.patchValue(programa)
+    this.idProgramaActual = programa.id;
+    // this.estadoCRUD = 'Actualizar';
+  }
 
   patchPrograma(): void{
     Swal.fire({
@@ -161,4 +173,19 @@ export class AdministradorProgramasComponent implements OnInit {
     })
   }
 
+  getRows() {
+    this.backend.get('/programas-academicos').subscribe(
+      {
+        next: (data) => {
+          this.rows = data;
+        },
+        error: (err) => {
+          console.log(err);
+        },
+        complete: () => {
+          console.log('Completado');
+        }
+      }
+    );
+  }
 }
