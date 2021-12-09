@@ -1,9 +1,11 @@
 <main class="container-fluid p-0">
-   <nav class="cls-navbar">
-      <div class="">
-         <button (click)="toggleSideBar()" class="btn btn-primary">sidebar</button>
+   <nav class="">
+      <div class="cls-sidebar-btn my-3 mx-3">
+         <a (click)="toggleSideBar()" class="btn btn-primary rounded-circle ">
+            <i class="bi bi-list p-0"></i>
+         </a>
       </div>
-      <div div class="">
+      <div div class="cls-navbar">
          <app-user-navbar></app-user-navbar>
       </div>
    </nav>
