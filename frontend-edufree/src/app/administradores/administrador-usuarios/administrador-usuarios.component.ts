@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { BackendService } from 'src/services/backend.service';
 import { Md5 } from 'ts-md5';
 import swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 
 interface Usuario {
   id: string;
@@ -152,7 +153,9 @@ export class AdministradorUsuariosComponent implements OnInit {
 
   Editar(): void {
     const editarUsuario = this.formUsuario.getRawValue();
-    const contraseniaEncriptada = Md5.hashStr(this.formUsuario.controls.contrasenia.value);
+    const contraseniaEncriptada = Md5.hashStr(
+      this.formUsuario.controls.contrasenia.value
+    );
     editarUsuario.contrasenia = contraseniaEncriptada;
 
     this.Backend.patchRequest(
@@ -178,22 +181,34 @@ export class AdministradorUsuariosComponent implements OnInit {
   }
 
   EmininarUsuario(usuario: any) {
-    this.Backend.deleteRequest('usuarios', usuario.id).subscribe({
-      next: () => {
-        this.obtenerUsuarios();
-        swal.fire(
-          '!!!',
-          'Usuario Eliminado ' +
-            usuario.nombresUsuario +
-            ' ' +
-            usuario.apellidosUsuario,
-          'success'
-        );
-      },
-      error: (err) => {
-        console.log(err);
-      },
-      complete: () => {},
+    Swal.fire({
+      title: '¿Está seguro?',
+      text: 'El usuario se eliminará y no podrá ser recuperado',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#162440',
+      cancelButtonColor: '#f25244',
+      confirmButtonText: '¡Eliminar!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.Backend.deleteRequest('usuarios', usuario.id).subscribe({
+          next: () => {
+            this.obtenerUsuarios();
+            swal.fire(
+              '!!!',
+              'Usuario Eliminado ' +
+                usuario.nombresUsuario +
+                ' ' +
+                usuario.apellidosUsuario,
+              'success'
+            );
+          },
+          error: (err) => {
+            console.log(err);
+          },
+          complete: () => {},
+        });
+      }
     });
   }
 }
