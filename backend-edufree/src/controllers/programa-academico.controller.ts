@@ -17,7 +17,8 @@ import {
   requestBody,
   response,
 } from '@loopback/rest';
-import {ProgramaAcademico} from '../models';
+import { ProgramaAcademico } from '../models';
+
 import {ProgramaAcademicoRepository} from '../repositories';
 
 export class ProgramaAcademicoController {
