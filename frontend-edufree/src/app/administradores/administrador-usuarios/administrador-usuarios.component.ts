@@ -5,6 +5,7 @@ import { Md5 } from 'ts-md5';
 import swal from 'sweetalert2';
 
 interface Usuario {
+  id:string,
   nombresUsuario: string,
   apellidosUsuario: string,
   tipoIdentificacion: string,
@@ -14,7 +15,8 @@ interface Usuario {
   programaAcademicoId: string,
   rol: string,
   usuario: string,
-  contrasenia: string
+  contrasenia: string,
+  fechaCreacion: string
 }
 
 interface Programa {
@@ -23,6 +25,7 @@ interface Programa {
 }
 
 interface Rol {
+  id:string,
   nombrePerfil: string
 }
 
@@ -55,7 +58,10 @@ export class AdministradorUsuariosComponent implements OnInit {
         programaAcademicoId: ['', Validators.required],
         rol: ['', Validators.required],
         usuario: ['', Validators.required],
-        contrasenia: ['', Validators.required]
+        contrasenia: ['', Validators.required],
+        fechaCreacion: ['', Validators.required],
+        perfilId: ['', Validators.required]
+
       }
     );
     this.obtenerUsuarios();
@@ -127,7 +133,6 @@ export class AdministradorUsuariosComponent implements OnInit {
     const usuarioNuevo = this.formUsuario.getRawValue();
     const contraseniaEncriptada = Md5.hashStr(this.formUsuario.controls.contrasenia.value)
     usuarioNuevo.contrasenia = contraseniaEncriptada;
-    usuarioNuevo.fechaCreacion = "2021-12-04T06:09:59.036Z";
     usuarioNuevo.perfilId = "string";
     this.Backend.postRequest('usuarios', JSON.stringify(usuarioNuevo)).subscribe(
       {

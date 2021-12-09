@@ -6,11 +6,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class BackendService {
-  rootUrl = 'http://localhost:3000/';
+  rootUrl = 'http://localhost:3000';
   constructor(private http: HttpClient) { }
 
   get(url: string): Observable<any> {
-    return this.http.get(this.rootUrl + url);
+    return this.http.get(this.rootUrl + '/' + url);
   }
 
   post(url: string, body: any): Observable<any> {
@@ -26,7 +26,7 @@ export class BackendService {
   }
 
   getById(url: string, id: string): Observable<any> {
-    return this.http.get(this.rootUrl + url + id); 
+    return this.http.get(this.rootUrl + url + id);
   }
 
   putById(url: string, id: string, body: any): Observable<any> {
@@ -40,7 +40,7 @@ export class BackendService {
   autenticar(credenciales: string): Observable<any> {
     const filter = '{"where":'+credenciales+'}';
     const filterEncode=encodeURIComponent(filter);
-    return this.http.get(this.rootUrl + 'usuarios?filter='+filterEncode);
+    return this.http.get(this.rootUrl + '/usuarios?filter='+filterEncode);
   }
 
   postRequest(controlador: string,datos: string): Observable<any> {
