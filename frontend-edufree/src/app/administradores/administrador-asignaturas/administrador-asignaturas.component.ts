@@ -23,7 +23,7 @@ interface Programa {
   templateUrl: './administrador-asignaturas.component.html',
   styleUrls: ['./administrador-asignaturas.component.scss']
 })
-export class AdministradorAsignaturasComponent implements OnInit, OnDestroy{
+export class AdministradorAsignaturasComponent implements OnInit, OnDestroy {
 
   listaAsignaturas: Asignatura[] = [];
   listaProgramas: Programa[] = [];
@@ -138,8 +138,6 @@ export class AdministradorAsignaturasComponent implements OnInit, OnDestroy{
 
         const asignaturaActualizada = this.formAsignaturas.getRawValue();
         asignaturaActualizada['cantidadCreditos'] = parseInt(asignaturaActualizada['cantidadCreditos']);
-        asignaturaActualizada['programaAcademicoId'] = this.listaProgramas?.find(
-          programa => programa.nombrePrograma === asignaturaActualizada.programaAcademicoId)?.id;
 
         this.backend.patchRequest(
           '/asignaturas',

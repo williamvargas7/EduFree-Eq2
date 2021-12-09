@@ -16,7 +16,7 @@
          <app-user-sidebar></app-user-sidebar>
       </div>
 
-      <div class="cls-body-app">
+      <div class="cls-body-app-sb-open container-fluid" [ngClass]="{'cls-body-app': !openSideBar}">
          <router-outlet></router-outlet>
       </div>
    </section>

@@ -1,4 +1,4 @@
-<main class="container-fluid p-5">
+<main class="container-fluid py-5 px-0">
 
     <section class="container my-3 row justify-content-md-left" [formGroup]="formAsignaturas">
         <header class="col">
@@ -75,10 +75,8 @@
     </section>
 
     <section class="m-0 p-0">
-        <table datatable
-        [dtOptions]="dtOptions"
-        [dtTrigger]="dtTrigger"
-        class="hover compact nowrap">
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+        class="table-responsive table-hover table-sm">
             <thead>
                 <tr>
                     <th class="text-center">Nombre</th>
@@ -91,18 +89,18 @@
             </thead>
 
             <tbody>
-                <tr *ngFor="let list of listaAsignaturas">
-                    <td scope="col">{{list.nombreAsignatura}}</td>
-                    <td scope="col">{{list.codigoAsignatura}}</td>
-                    <td scope="col">{{list.componente}}</td>
-                    <td scope="col">{{list.cantidadCreditos}}</td>
-                    <td scope="col">{{list.programaAcademicoId}}</td>
+                <tr *ngFor="let a of listaAsignaturas">
+                    <td scope="col">{{a.nombreAsignatura}}</td>
+                    <td scope="col">{{a.codigoAsignatura}}</td>
+                    <td scope="col">{{a.componente}}</td>
+                    <td scope="col">{{a.cantidadCreditos}}</td>
+                    <td scope="col">{{a.programaAcademicoId}}</td>
                     <td scope="col">
-                        <a type="button" class="btn btn-outline-warning me-1 rounded-pill" (click)="actualizar(list)">
+                        <a type="button" class="btn btn-outline-warning me-1 rounded-pill" (click)="actualizar(a)">
                             <i class="bi bi-pencil-square"></i>
                         </a>
                         <a type="button" class="btn btn-outline-danger me-1 rounded-pill"
-                            (click)="deleteAsignaturas(list)">
+                            (click)="deleteAsignaturas(a)">
                             <i class="bi bi-trash"></i>
                         </a>
                         <a type="button" class="btn btn-outline-dark me-1 rounded-pill">
