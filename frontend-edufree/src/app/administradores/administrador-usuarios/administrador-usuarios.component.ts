@@ -86,14 +86,11 @@ export class AdministradorUsuariosComponent implements OnInit {
   obtenerProgramas(): void {
     this.Backend.get('/programas-academicos').subscribe({
       next: (data) => {
-        // alert(data+"Datos Obtenidos correctamente");
         this.listaProgramas = data;
       },
       error: (err) => {
-        //alert(err);
       },
       complete: () => {
-        // alert("Completado");
       },
     });
   }

@@ -3,9 +3,10 @@
       <h1 class="text-center h1">Administrador de Programas</h1>
    </header>
 
-   <section class="text-center py-2">
-      <button type="button" class="btn cls-btnAgregar btn-default me-3 rounded-pill">
-         <i class="bi bi-node-plus w-100"></i>
+   <section class="text-center py-2" [formGroup]="formProgramas">
+      <button type="button" class="btn cls-btnAgregar rounded-circle"
+         (click)="crear()">
+         <i class="h4 bi bi-plus-square"></i>
       </button>
    </section>
 
@@ -48,15 +49,18 @@
 
             <div class="col-md-6">
                <div class="form-group py-1">
-                  <input type="text" class="form-control rounded-pill" formControlName="codigoPrograma"
+                  <input type="text" class="form-control rounded-pill" 
+                     formControlName="codigoPrograma"
                      placeholder="Código del programa" required />
                </div>
                <div class="form-group py-1">
-                  <input type="text" class="form-control rounded-pill" formControlName="cantidadCreditos"
+                  <input type="text" class="form-control rounded-pill" 
+                     formControlName="cantidadCreditos"
                      placeholder="Créditos" required />
                </div>
                <div class="form-group py-1">
-                  <select class="form-select rounded-pill" required placeholder="Modalidad" formControlName="modalidad">
+                  <select class="form-select rounded-pill" required placeholder="Modalidad" 
+                     formControlName="modalidad">
                      <option value="" disabled selected hidden>Modalidad</option>
                      <option value="Presencial">Presencial</option>
                      <option value="Semipresencial">Semipresencial</option>
@@ -64,7 +68,8 @@
                   </select>
                </div>
                <div class="form-group py-1">
-                  <input type="text" class="form-control rounded-pill" formControlName="imagen" placeholder="Imágen"
+                  <input type="text" class="form-control rounded-pill" placeholder="Imágen"
+                     formControlName="imagen"
                      required />
                </div>
                <div class="form-group py-1">
@@ -76,13 +81,22 @@
          </div>
 
          <div class="row justify-content-center py-3">
-            <button (click)="postPrograma()" class="btn btn-outline-success rounded-pill mx-1 cls-button-1">
-               Registrar Usuario
+            <button 
+               type="submit"
+               class="btn btn-outline-success rounded-pill mx-1 cls-button-1"
+               value="Registrar Programa"
+               (click)="postPrograma()">
+               Registrar Programa
             </button>
-            <button (click)="patchPrograma()" class="btn btn-outline-success rounded-pill mx-1 cls-button-1">
-               Editor Usuario
+            <button 
+               type="submit"
+               class="btn btn-outline-success rounded-pill mx-1 cls-button-1"
+               value="Registrar Programa"
+               (click)="patchPrograma()">
+               Editar Programa
             </button>
-            <button class="btn btn-outline-danger rounded-pill mx-1 cls-button-1">
+            <button (click)="limpiarFormulario()"
+               class="btn btn-outline-danger rounded-pill mx-1 cls-button-1">
                Limpiar
             </button>
          </div>
@@ -112,10 +126,12 @@
                <td scope="col">{{list.nivelAcademico}}</td>
                <td scope="col">{{list.modalidad}}</td>
                <td scope="col">
-                  <a type="button" class="btn btn-outline-warning me-1 rounded-pill">
+                  <a type="button" class="btn btn-outline-warning me-1 rounded-pill"
+                     (click)="actualizar(list)">
                      <i class="bi bi-pencil-square"></i>
                   </a>
-                  <a type="button" class="btn btn-outline-danger me-1 rounded-pill" (click)="deletePrograma(list)">
+                  <a type="button" class="btn btn-outline-danger me-1 rounded-pill" 
+                     (click)="deletePrograma(list)">
                      <i class="bi bi-trash"></i>
                   </a>
                   <a type="button" class="btn btn-outline-dark me-1 rounded-pill">

@@ -27,7 +27,7 @@ interface Programa {
 export class AdministradorProgramasComponent implements OnInit {
   listaProgramas: Programa[] = [];
   formProgramas: any;
-  estadoCRUD!: 'Agregar';
+  modoCrud = 'crear';
   idProgramaActual!: '';
   rows = [];
   columns = [
@@ -39,6 +39,7 @@ export class AdministradorProgramasComponent implements OnInit {
     { name: 'Modalidad' },
     { name: 'Acciones' },
   ];
+
   constructor(private fb: FormBuilder,private backend: BackendService){
     this.getProgramas();
     this.getRows();
@@ -75,23 +76,31 @@ export class AdministradorProgramasComponent implements OnInit {
     );
   }
 
-  iniciarAgregacion() {
-    this.estadoCRUD = 'Agregar';
+  crear() {
+    this.modoCrud = 'crear';
   }
 
   postPrograma() {
     const programaNuevo = this.formProgramas.getRawValue();
-    programaNuevo['fechaCreacion'] = new Date();
+    // programaNuevo['fechaCreacion'] = new Date();
     programaNuevo['cantidadCreditos'] = parseInt(programaNuevo['cantidadCreditos']);
     programaNuevo['cantidadSemestres'] = parseInt(programaNuevo['cantidadCreditos']);
     programaNuevo['costo'] = parseInt(programaNuevo['costo']);
 
 
-    this.backend.postRequest('programas-academicos', JSON.stringify(programaNuevo)).subscribe(
+    this.backend.postRequest(
+      'programas-academicos', 
+      JSON.stringify(programaNuevo)
+    ).subscribe(
       {
         next: () => {
           this.getProgramas();
-          Swal.fire('Programa creado','El programa se ha creado correctamente','success');
+          Swal.fire(
+            'Programa creado',
+            'El programa se ha creado correctamente',
+            'success'
+          );
+          this.limpiarFormulario();
         },
         error: (err) => {
           console.log(err);
@@ -103,10 +112,10 @@ export class AdministradorProgramasComponent implements OnInit {
     );
   }
 
-  iniciarEdicion(programa: any): void {
+  actualizar(programa: any): void {
     this.formProgramas.patchValue(programa)
     this.idProgramaActual = programa.id;
-    // this.estadoCRUD = 'Actualizar';
+    this.modoCrud = 'actualizar';
   }
 
   patchPrograma(): void{
@@ -117,16 +126,30 @@ export class AdministradorProgramasComponent implements OnInit {
       showCancelButton: true,
       confirmButtonColor: '#162440',
       cancelButtonColor: '#f25244',
-      confirmButtonText: 'Modificar!'
+      confirmButtonText: 'Modificar'
     }).then((result) => {
       if (result.isConfirmed) {
 
         const programaActualizado = this.formProgramas.getRawValue();
-        this.backend.patchRequest('programas-academicos', this.idProgramaActual, programaActualizado).subscribe(
+        // programaActualizado['fechaCreacion'] = new Date();
+        programaActualizado['cantidadCreditos'] = parseInt(programaActualizado['cantidadCreditos']);
+        programaActualizado['cantidadSemestres'] = parseInt(programaActualizado['cantidadCreditos']);
+        programaActualizado['costo'] = parseInt(programaActualizado['costo']);
+
+        this.backend.patchRequest(
+          'programas-academicos',
+          this.idProgramaActual,
+          programaActualizado
+        ).subscribe(
           {
             next: (data) => {
               this.getProgramas();
-              Swal.fire('Programa editado', `El programa ${programaActualizado.nombrePrograma} se ha editado correctamente`,'success');
+              Swal.fire(
+                'Programa editado',
+                `El programa ${programaActualizado.nombrePrograma} se ha editado correctamente`,
+                'success'
+              );
+              this.limpiarFormulario();
             },
             error: (err) => {
               console.log(err);
@@ -151,13 +174,16 @@ export class AdministradorProgramasComponent implements OnInit {
       confirmButtonText: '¡Eliminar!'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.backend.deleteRequest('programas-academicos', programa.id).subscribe(
+        this.backend.deleteRequest(
+          'programas-academicos', 
+          programa.id
+        ).subscribe(
           {
             next: () => {
               this.getProgramas();
               Swal.fire(
                 '¡Eliminado!',
-                'El programa '+programa.nombrePrograma+' - '+programa.codigoPrograma+' ha sido eliminado correctamente',
+                `El programa ${programa.nombrePrograma} - ${programa.codigoPrograma} ha sido eliminado correctamente`,
                 'success'
               )
             },
@@ -173,7 +199,11 @@ export class AdministradorProgramasComponent implements OnInit {
     })
   }
 
-  getRows() {
+  limpiarFormulario(): void {
+    this.formProgramas.reset();
+  }
+
+  getRows(): void {
     this.backend.get('/programas-academicos').subscribe(
       {
         next: (data) => {

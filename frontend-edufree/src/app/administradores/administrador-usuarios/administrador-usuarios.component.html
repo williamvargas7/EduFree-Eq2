@@ -31,26 +31,26 @@
                     <div class="form-group py-1">
                         <select class="form-select rounded-pill" placeholder="Tipo Identificacion"
                             formControlName="tipoIdentificacion">
-                            <option class="hidden" selected disabled>Tipo Identificacion</option>
+                            <option value="" disabled selected hidden>Tipo Identificacion</option>
                             <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
                             <option value="Cedula de Ciudadania">Cedula de Ciudadania</option>
                             <option value="Cedula de Extranjeria">Cedula de Extranjeria</option>
                             <option value="Pasaporte">Pasaporte</option>
                             <option value="Numero de Identificacion Personal">Numero de Identificacion Personal</option>
                         </select>
-
                     </div>
                     <div class="form-group py-1">
-
                         <select class="form-select rounded-pill"
                             placeholder="Por favor selecciona el Programa Acádemico"
                             formControlName="programaAcademicoId">
-                            <option class="hidden" selected disabled>Selecciona el Programa Acádemico</option>
+                            <option value="" disabled selected hidden>Selecciona el Programa Acádemico</option>
                             <option *ngFor="let i of listaProgramas" value="{{i.id}}">{{i.nombrePrograma}}
                             </option>
                         </select>
-
-
+                    </div>
+                    <div class="form-group py-1">
+                        <input type="text" class="form-control rounded-pill" placeholder="Fecha Creación" readonly
+                            formControlName="fechaCreacion" />
                     </div>
 
                 </div>
