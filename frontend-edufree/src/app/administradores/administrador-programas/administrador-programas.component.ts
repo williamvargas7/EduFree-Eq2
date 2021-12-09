@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { BackendService } from 'src/services/backend.service';
 import Swal from 'sweetalert2';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-
-
+import { Subject } from 'rxjs';
 
 interface Programa {
   nombrePrograma: string;
@@ -24,25 +22,17 @@ interface Programa {
   templateUrl: './administrador-programas.component.html',
   styleUrls: ['./administrador-programas.component.scss']
 })
-export class AdministradorProgramasComponent implements OnInit {
+
+export class AdministradorProgramasComponent implements OnInit, OnDestroy {
   listaProgramas: Programa[] = [];
   formProgramas: any;
   modoCrud = 'crear';
   idProgramaActual!: '';
-  rows = [];
-  columns = [
-    { name: 'Nombre Programa' },
-    { name: 'Código Programa' },
-    { name: 'Semestres' },
-    { name: 'Creditos' },
-    { name: 'Nivel Académico' },
-    { name: 'Modalidad' },
-    { name: 'Acciones' },
-  ];
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject();
 
   constructor(private fb: FormBuilder,private backend: BackendService){
     this.getProgramas();
-    this.getRows();
     this.formProgramas = this.fb.group({
       nombrePrograma: ['', Validators.required],
       codigoPrograma: ['', Validators.required],
@@ -60,11 +50,16 @@ export class AdministradorProgramasComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngOnDestroy(): void {
+    this.dtTrigger.unsubscribe();
+  }
+
   getProgramas() {
     this.backend.get('/programas-academicos').subscribe(
       {
         next: (data) => {
           this.listaProgramas = data;
+          this.dtTrigger.next(data);
         },
         error: (err) => {
           console.log(err);
@@ -94,12 +89,12 @@ export class AdministradorProgramasComponent implements OnInit {
     ).subscribe(
       {
         next: () => {
-          this.getProgramas();
           Swal.fire(
             'Programa creado',
             'El programa se ha creado correctamente',
             'success'
           );
+          this.getProgramas();
           this.limpiarFormulario();
         },
         error: (err) => {
@@ -133,7 +128,7 @@ export class AdministradorProgramasComponent implements OnInit {
         const programaActualizado = this.formProgramas.getRawValue();
         // programaActualizado['fechaCreacion'] = new Date();
         programaActualizado['cantidadCreditos'] = parseInt(programaActualizado['cantidadCreditos']);
-        programaActualizado['cantidadSemestres'] = parseInt(programaActualizado['cantidadCreditos']);
+        programaActualizado['cantidadSemestres'] = parseInt(programaActualizado['cantidadSemestres']);
         programaActualizado['costo'] = parseInt(programaActualizado['costo']);
 
         this.backend.patchRequest(
@@ -143,12 +138,12 @@ export class AdministradorProgramasComponent implements OnInit {
         ).subscribe(
           {
             next: (data) => {
-              this.getProgramas();
               Swal.fire(
                 'Programa editado',
                 `El programa ${programaActualizado.nombrePrograma} se ha editado correctamente`,
                 'success'
               );
+              this.getProgramas();
               this.limpiarFormulario();
             },
             error: (err) => {
@@ -180,12 +175,12 @@ export class AdministradorProgramasComponent implements OnInit {
         ).subscribe(
           {
             next: () => {
-              this.getProgramas();
               Swal.fire(
                 '¡Eliminado!',
                 `El programa ${programa.nombrePrograma} - ${programa.codigoPrograma} ha sido eliminado correctamente`,
                 'success'
               )
+              this.getProgramas();
             },
             error: (err) => {
               console.log(err);
@@ -201,21 +196,5 @@ export class AdministradorProgramasComponent implements OnInit {
 
   limpiarFormulario(): void {
     this.formProgramas.reset();
-  }
-
-  getRows(): void {
-    this.backend.get('/programas-academicos').subscribe(
-      {
-        next: (data) => {
-          this.rows = data;
-        },
-        error: (err) => {
-          console.log(err);
-        },
-        complete: () => {
-          console.log('Completado');
-        }
-      }
-    );
   }
 }

@@ -1,13 +1,14 @@
 <main class="container-fluid p-5">
-   <header class="container-fluid header m-0">
-      <h1 class="text-center h1">Administrador de Programas</h1>
-   </header>
 
-   <section class="text-center py-2" [formGroup]="formProgramas">
-      <button type="button" class="btn cls-btnAgregar rounded-circle"
-         (click)="crear()">
-         <i class="h4 bi bi-plus-square"></i>
-      </button>
+   <section class="container my-3 row justify-content-md-left" [formGroup]="formProgramas">
+      <header class="col">
+         <h1 class="h1">Administrador de Programas</h1>
+      </header>
+      <div class="col col-lg-2 justify-content-center">
+         <button type="button" class="btn btn-block cls-btnAgregar rounded-pill shadow-sm" (click)="crear()">
+            <i class="h2 bi bi-plus-square"></i>
+         </button>
+      </div>
    </section>
 
    <section class="mb-5">
@@ -49,18 +50,15 @@
 
             <div class="col-md-6">
                <div class="form-group py-1">
-                  <input type="text" class="form-control rounded-pill" 
-                     formControlName="codigoPrograma"
+                  <input type="text" class="form-control rounded-pill" formControlName="codigoPrograma"
                      placeholder="Código del programa" required />
                </div>
                <div class="form-group py-1">
-                  <input type="text" class="form-control rounded-pill" 
-                     formControlName="cantidadCreditos"
+                  <input type="text" class="form-control rounded-pill" formControlName="cantidadCreditos"
                      placeholder="Créditos" required />
                </div>
                <div class="form-group py-1">
-                  <select class="form-select rounded-pill" required placeholder="Modalidad" 
-                     formControlName="modalidad">
+                  <select class="form-select rounded-pill" required placeholder="Modalidad" formControlName="modalidad">
                      <option value="" disabled selected hidden>Modalidad</option>
                      <option value="Presencial">Presencial</option>
                      <option value="Semipresencial">Semipresencial</option>
@@ -68,8 +66,7 @@
                   </select>
                </div>
                <div class="form-group py-1">
-                  <input type="text" class="form-control rounded-pill" placeholder="Imágen"
-                     formControlName="imagen"
+                  <input type="text" class="form-control rounded-pill" placeholder="Imágen" formControlName="imagen"
                      required />
                </div>
                <div class="form-group py-1">
@@ -81,22 +78,15 @@
          </div>
 
          <div class="row justify-content-center py-3">
-            <button 
-               type="submit"
-               class="btn btn-outline-success rounded-pill mx-1 cls-button-1"
-               value="Registrar Programa"
-               (click)="postPrograma()">
+            <button *ngIf="modoCrud == 'crear'" (click)="postPrograma()"
+               class="btn btn-outline-success rounded-pill mx-1 cls-button-1">
                Registrar Programa
             </button>
-            <button 
-               type="submit"
-               class="btn btn-outline-success rounded-pill mx-1 cls-button-1"
-               value="Registrar Programa"
-               (click)="patchPrograma()">
+            <button *ngIf="modoCrud == 'actualizar'" (click)="patchPrograma()"
+               class="btn btn-outline-success rounded-pill mx-1 cls-button-1">
                Editar Programa
             </button>
-            <button (click)="limpiarFormulario()"
-               class="btn btn-outline-danger rounded-pill mx-1 cls-button-1">
+            <button (click)="limpiarFormulario()" class="btn btn-outline-danger rounded-pill mx-1 cls-button-1">
                Limpiar
             </button>
          </div>
@@ -104,16 +94,17 @@
    </section>
 
    <section class="m-0 p-0">
-      <table class="table table-responsive-dark table-hover table-sm">
+      <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class=""
+         class="hover compact nowrap">
          <thead>
             <tr>
-               <th>Nombres</th>
-               <th>Código</th>
-               <th>Semestres</th>
-               <th>Créditos</th>
-               <th>Nivel Académico</th>
-               <th>Modalidad</th>
-               <th>Acciones</th>
+               <th class="text-center">Nombres</th>
+               <th class="text-center">Código</th>
+               <th class="text-center">Semestres</th>
+               <th class="text-center">Créditos</th>
+               <th class="text-center">Nivel Académico</th>
+               <th class="text-center">Modalidad</th>
+               <th class="text-center">Acciones</th>
             </tr>
          </thead>
 
@@ -126,16 +117,14 @@
                <td scope="col">{{list.nivelAcademico}}</td>
                <td scope="col">{{list.modalidad}}</td>
                <td scope="col">
-                  <a type="button" class="btn btn-outline-warning me-1 rounded-pill"
-                     (click)="actualizar(list)">
+                  <a type="button" class="btn btn-outline-warning me-1 rounded-pill" (click)="actualizar(list)">
                      <i class="bi bi-pencil-square"></i>
                   </a>
-                  <a type="button" class="btn btn-outline-danger me-1 rounded-pill" 
-                     (click)="deletePrograma(list)">
+                  <a type="button" class="btn btn-outline-danger me-1 rounded-pill" (click)="deletePrograma(list)">
                      <i class="bi bi-trash"></i>
                   </a>
                   <a type="button" class="btn btn-outline-dark me-1 rounded-pill">
-                     Asignaturas
+                     <i class="bi bi-book"></i>
                   </a>
                </td>
             </tr>
@@ -143,15 +132,4 @@
       </table>
    </section>
 
-   <section class="m-0 p-0">
-      <ngx-datatable 
-         [rows]="rows" 
-         class="bootstrap"
-         [columnMode]="'force'"
-         [headerHeight]="50" 
-         [footerHeight]="50" 
-         [rowHeight]="'auto'" 
-         [columns]="columns">
-      </ngx-datatable>
-   </section>
 </main>

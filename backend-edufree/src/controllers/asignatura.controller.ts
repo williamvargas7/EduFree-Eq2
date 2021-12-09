@@ -44,6 +44,9 @@ export class AsignaturaController {
     })
     asignatura: Omit<Asignatura, 'id'>,
   ): Promise<Asignatura> {
+    // console.log(JSON.stringify(asignatura));
+    asignatura.fechaCreacion = new Date().toString();
+    // console.log(JSON.stringify(asignatura));
     return this.asignaturaRepository.create(asignatura);
   }
 
