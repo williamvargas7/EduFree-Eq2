@@ -4,6 +4,8 @@ import { BackendService } from 'src/services/backend.service';
 import { Md5 } from 'ts-md5';
 import swal from 'sweetalert2';
 import Swal from 'sweetalert2';
+import { Subject } from 'rxjs';
+
 
 interface Usuario {
   id: string;
@@ -42,6 +44,8 @@ export class AdministradorUsuariosComponent implements OnInit {
   listaRoles: Rol[] = [];
   idUsuarioEdit = '';
   modoCrud = 'adicion';
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject();
 
   constructor(private fb: FormBuilder, private Backend: BackendService) {
     this.formUsuario = this.fb.group({
@@ -66,13 +70,25 @@ export class AdministradorUsuariosComponent implements OnInit {
     this.obtenerRoles();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 15,
+      language: {
+        url: '//cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json',
+      }
+    };
+  }
+
+  ngOnDestroy(): void {
+    this.dtTrigger.unsubscribe();
+  }
 
   obtenerUsuarios(): void {
     this.Backend.get('usuarios').subscribe({
       next: (data) => {
         this.listaUsuarios = data;
-        console.log(data);
+        this.dtTrigger.next(data);
       },
       error: (e) => {
         console.log('error');

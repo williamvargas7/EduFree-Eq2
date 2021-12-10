@@ -48,6 +48,13 @@ export class AdministradorProgramasComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 15,
+      language: {
+        url: "//cdn.datatables.net/plug-ins/1.11.3/i18n/es-mx.json"
+      }
+    }
   }
 
   ngOnDestroy(): void {

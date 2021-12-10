@@ -1,22 +1,25 @@
-<main class="container-fluid py-5 px-0">
-    <header class="container-fluid header m-0">
-        <h1 class="text-center h1">Administrador de usuarios</h1>
-    </header>
+<main class=" m-5 pt-1">
 
-    <section class="d-flex flex-row justify-content-center py-2" [formGroup]="formUsuario">
-        <button type="button" class="btn cls-btnAgregar btn-default me-3 rounded-pill" (click)="iniciarAdicion()"><i
-                class="bi bi-person-plus-fill"></i></button>
-
-        <select class="custom-select cls-select p-1 rounded-pill" formControlName="rol">
-            <option class="hidden" selected disabled>Elige el Rol ... </option>
-            <option *ngFor="let i of listaRoles" value="{{i.nombrePerfil}}">{{i.nombrePerfil}}</option>
-        </select>
-
+    <section class="my-5 mt-5 row justify-content-md-left" [formGroup]="formUsuario">
+        <header class="col-6">
+            <h1 class="h1">Administrador de usuarios</h1>
+        </header>
+        <div class="col-1 justify-content-center">
+            <button type="button"
+                class="btn btn-block cls-btnAgregar rounded-pill shadow-sm" (click)="iniciarAdicion()">
+                <i class="h3 bi bi-person-plus-fill"></i></button>
+        </div>
+        <div class="col-5 justify-content-center">
+            <select class="custom-select cls-select p-1 rounded-pill" formControlName="rol">
+                <option class="hidden" selected disabled>Elige el Rol ... </option>
+                <option *ngFor="let i of listaRoles" value="{{i.nombrePerfil}}">{{i.nombrePerfil}}</option>
+            </select>
+        </div>
     </section>
 
     <section class="mb-5">
         <form [formGroup]="formUsuario">
-            <div class="row register-form" [formGroup]="formUsuario">
+            <div class="row register-form">
                 <div class="col-md-6">
                     <div class="form-group py-1">
                         <input type="text" class="form-control rounded-pill" placeholder="Nombres" value=""
@@ -83,7 +86,7 @@
                 </div>
             </div>
 
-            <div class="d-flex justify-content-center py-3">
+            <div class="row justify-content-center py-3">
                 <button *ngIf="modoCrud == 'adicion'" type="submit"
                     class="btn btn-outline-success rounded-pill mx-1 cls-button-1" value="Registrar Usuario"
                     (click)="crearUsuario()">Registrar Nuevo
@@ -94,46 +97,47 @@
                     (click)="Editar()">Editar
                     Usuario</button>
 
-                <button type="submit" class="btn btn-outline-danger rounded-pill mx-1 cls-button-1"
+                <button class="btn btn-outline-danger rounded-pill mx-1 cls-button-1"
                     value="Registrar Usuario" (click)="Limpiar()">Limpiar</button>
             </div>
         </form>
     </section>
 
     <section class="m-0 p-0">
-        <table class="table table-responsive table-hover table-sm">
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+            class="table-responsive row hover">
 
             <thead class="">
                 <tr>
-                    <th scope="col">Nombres</th>
-                    <th scope="col">Apellidos</th>
-                    <th scope="col">Correo Electrónico</th>
-                    <th scope="col">Numero Identificacion</th>
-                    <th scope="col">Tipo Identificacion</th>
-                    <th scope="col">Programa Acádemico</th>
-                    <th scope="col">Telefono</th>
-                    <th scope="col">Rol</th>
-                    <th scope="col">Usuario</th>
-                    <th scope="col">Contraseña</th>
-                    <th scope="col">Fecha de Creacion</th>
-                    <th scope="col">Acciones</th>
+                    <th class="text-center">Nombres</th>
+                    <th class="text-center">Apellidos</th>
+                    <th class="text-center">Tipo Identificacion</th>
+                    <th class="text-center">Numero Identificacion</th>
+                    <th class="text-center"class="text-center">Correo Electrónico</th>
+                    <th class="text-center">Programa Acádemico</th>
+                    <th class="text-center">Telefono</th>
+                    <th class="text-center">Rol</th>
+                    <!-- <th class="text-center">Usuario</th>
+                    <th class="text-center">Contraseña</th> 
+                    <th class="text-center">Fecha de Creacion</th>-->
+                    <th class="text-center">Acciones</th>
                 </tr>
             </thead>
-
+ 
             <tbody>
                 <tr *ngFor="let list of listaUsuarios">
-                    <td> {{list.nombresUsuario}} </td>
-                    <td> {{list.apellidosUsuario}} </td>
-                    <td> {{list.correoElectronico}} </td>
-                    <td> {{list.noIdentificacion}} </td>
-                    <td> {{list.tipoIdentificacion}} </td>
-                    <td> {{list.programaAcademicoId}} </td>
-                    <td> {{list.telefono}} </td>
-                    <td> {{list.rol}} </td>
-                    <td> {{list.usuario}} </td>
-                    <td> {{list.contrasenia}} </td>
-                    <td> {{list.fechaCreacion}} </td>
-                    <td>
+                    <td scope="col"> {{list.nombresUsuario}} </td>
+                    <td scope="col"> {{list.apellidosUsuario}} </td>
+                    <td scope="col"> {{list.tipoIdentificacion}} </td>
+                    <td scope="col"> {{list.noIdentificacion}} </td>
+                    <td scope="col"> {{list.correoElectronico}} </td>
+                    <td scope="col"> {{list.programaAcademicoId}} </td>
+                    <td scope="col"> {{list.telefono}} </td>
+                    <td scope="col"> {{list.rol}} </td>
+                    <!-- <td scope="col"> {{list.usuario}} </td>
+                    <td scope="col"> {{list.contrasenia}} </td> 
+                    <td scope="col"> {{list.fechaCreacion}} </td>-->
+                    <td scope="col">
                         <a type="button" class="btn btn-outline-dark me-1 rounded-pill"
                             (click)="IniciarEdicion(list)"><i class="bi bi-pencil-square "></i></a>
 

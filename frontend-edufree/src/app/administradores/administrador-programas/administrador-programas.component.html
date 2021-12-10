@@ -1,11 +1,13 @@
-<main class="container-fluid py-5 px-0">
+<main class="m-5 pt-1">
 
-   <section class="container my-3 row justify-content-md-left" [formGroup]="formProgramas">
-      <header class="col">
+   <section class="my-5 mt-5 row justify-content-md-left" [formGroup]="formProgramas">
+      <header class="col-10">
          <h1 class="h1">Administrador de Programas</h1>
       </header>
-      <div class="col col-lg-2 justify-content-center">
-         <button type="button" class="btn btn-block cls-btnAgregar rounded-pill shadow-sm" (click)="crear()">
+      <div class="col-2 justify-content-center">
+         <button type="button" 
+            class="btn btn-block cls-btnAgregar rounded-pill shadow-sm" 
+            (click)="crear()">
             <i class="h2 bi bi-plus-square"></i>
          </button>
       </div>
@@ -94,8 +96,7 @@
    </section>
 
    <section class="m-0 p-0">
-      <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
-         class="table-responsive table-hover table-sm">
+      <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table-responsive row-fluid hover display">
          <thead>
             <tr>
                <th class="text-center">Nombres</th>
