@@ -9,7 +9,7 @@ export class GlobalService {
   rutaActual = '';
   nombrePerfil = '';
   nombreUsuario = '';
- 
+
 
   constructor(private router: Router) {
 
@@ -17,7 +17,7 @@ export class GlobalService {
 
   cerrarSesion(): void {
     localStorage.removeItem('tk');
-    this.router.navigate(['/sesion/login']);
+    this.router.navigate(['/login']);
   }
 
 
