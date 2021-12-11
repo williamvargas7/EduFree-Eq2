@@ -47,6 +47,19 @@ export class SeguridadService {
       }, '2&%$##$%&%$&%');
       return token;
   }
+
+  ValidarToken(token: string) {
+    try {
+      const datos = jwt.verify(token, this.claveSecreta);
+      if (datos) {
+        return datos;
+      } else {
+        return false;
+      }
+    } catch (error) {
+      return false;
+    }
+  }
   /*
    * Add service methods here
    */
