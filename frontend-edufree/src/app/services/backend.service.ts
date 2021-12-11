@@ -4,19 +4,25 @@ import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
+
 })
 export class BackendService {
   rootUrl = 'http://localhost:3000/';
-  constructor(private http: HttpClient) { }
+  token = '';
+  constructor(private http: HttpClient
+    ) {
+    const tk = localStorage.getItem('tk');
+    if (tk) {
+      this.token = tk;
+    }
+   }
 
   get(url: string): Observable<any> {
-    return this.http.get(this.rootUrl + url);
-  }
-
-  autenticar(credenciales: string): Observable<any> {
-    const filter = '{"where":'+credenciales+'}';
-    const filterEncode=encodeURIComponent(filter);
-    return this.http.get(this.rootUrl + 'usuarios?filter='+filterEncode);
+    return this.http.get(this.rootUrl + url,
+      {
+        headers: { 'Authorization': `Bearer ${this.token}` }
+      }
+      );
   }
 
   postRequest(controlador: string,datos: string): Observable<any> {
@@ -24,7 +30,7 @@ export class BackendService {
     return this.http.post(
       url,
       datos, {
-      headers: { 'content-type': 'application/json'}
+      headers: { 'content-type': 'application/json','Authorization': `Bearer ${this.token}`}
     });
   }
 
@@ -33,7 +39,7 @@ export class BackendService {
     return this.http.patch(
       url,
       datos, {
-      headers: { 'content-type': 'application/json'}
+      headers: { 'content-type': 'application/json','Authorization': `Bearer ${this.token}`}
     });
   }
 
@@ -41,9 +47,31 @@ export class BackendService {
     const url = this.rootUrl + '/' + controlador+'/'+id;
     return this.http.delete(
       url,{
-      headers: { 'content-type': 'application/json'}
+      headers: { 'content-type': 'application/json','Authorization': `Bearer ${this.token}`}
     });
   }
 
 
+  autenticar(credenciales: string): Observable<any> {
+    /*const filter = '{"where":'+credenciales+'}';
+    const filterEncode=encodeURIComponent(filter);
+    return this.http.get(this.rootUrl + 'usuarios?filter='+filterEncode);*/
+
+    return this.http.post(
+      this.rootUrl + 'autenticar',
+      credenciales,
+      {
+        headers: { 'content-type': 'application/json','Authorization': `Bearer ${this.token}`}
+      }
+    );
+
+
+  }
+
+
+}
+
+export interface GroupUserAttr {
+  nombre: string,
+  id: string
 }

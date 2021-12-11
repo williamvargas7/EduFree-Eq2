@@ -12,3 +12,4 @@ export * from './grupo.controller';
 export * from './usuario.controller';
 export * from './perfil.controller';
 export * from './usuario-por-grupo.controller';
+export * from './login.controller';

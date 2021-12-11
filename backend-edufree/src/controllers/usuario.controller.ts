@@ -35,36 +35,6 @@ export class UsuarioController {
     public servicioSeguridad: SeguridadService
   ) { }
 
-  @post('/login', {
-    responses: {
-      '200': {
-        description: 'Login Ok'
-      }
-    }
-  })
-  async login(
-    @requestBody() credenciales: Credenciales
-  ) {
-    try {
-      const usuarioBuscado = await this.servicioSeguridad.ValidarUsuario(credenciales);
-      if (usuarioBuscado) {
-        // Generar Token
-        let token = await this.servicioSeguridad.GenerarToken(usuarioBuscado);
-        //return token;
-        return {
-          tk: token,
-          data: usuarioBuscado
-        };
-
-      } else {
-        throw new HttpErrors[401]('Datos no validos');
-      }
-
-    } catch (error) {
-      throw new HttpErrors[401]('Datos no validos');
-    }
-  }
-
   @post('/usuarios')
   @response(200, {
     description: 'Usuario model instance',

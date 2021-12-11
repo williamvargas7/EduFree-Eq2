@@ -49,7 +49,8 @@ import { IndexComponent } from './index/index.component';
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
-    DataTablesModule
+    DataTablesModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
