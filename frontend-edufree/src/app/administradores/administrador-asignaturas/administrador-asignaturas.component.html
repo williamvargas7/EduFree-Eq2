@@ -8,7 +8,7 @@
             <button type="button" 
                 class="btn btn-block cls-btnAgregar rounded-pill shadow-sm" 
                 (click)="crear()">
-                <i class="h bi bi-plus-square"></i>
+                <i class="h2 bi bi-plus-square"></i>
             </button>
         </div>
     </section>
@@ -47,8 +47,8 @@
                         <select class="form-select rounded-pill" required placeholder="Programa Acádemico"
                             formControlName="programaAcademicoId">
                             <option value="" disabled selected hidden>Programa Acádemico</option>
-                            <option *ngFor="let programa of listaProgramas" value="{{programa.id}}">
-                                {{programa.nombrePrograma}}
+                            <option *ngFor="let p of listaProgramas" value="{{p.id}}">
+                                {{p.nombrePrograma}}
                             </option>
                         </select>
                     </div>

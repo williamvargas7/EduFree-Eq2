@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserLayoutComponent implements OnInit {
 
-  openSideBar: boolean = true;
+  closeSideBar: boolean = true;
 
   constructor() { }
 
@@ -16,7 +16,7 @@ export class UserLayoutComponent implements OnInit {
   }
 
   toggleSideBar(): void {
-    this.openSideBar = !this.openSideBar;
+    this.closeSideBar = !this.closeSideBar;
   }
 
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { BackendService } from 'src/services/backend.service';
+import { BackendService } from 'src/app/services/backend.service';
 import { Md5 } from 'ts-md5';
 import swal from 'sweetalert2';
 import Swal from 'sweetalert2';

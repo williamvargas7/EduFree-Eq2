@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendService } from 'src/services/backend.service';
+import { BackendService } from 'src/app/services/backend.service';
 import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import {Md5} from 'ts-md5/dist/md5';
 

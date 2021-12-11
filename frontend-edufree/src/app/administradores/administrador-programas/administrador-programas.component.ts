@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { BackendService } from 'src/services/backend.service';
+import { BackendService } from 'src/app/services/backend.service';
 import Swal from 'sweetalert2';
 import { Subject } from 'rxjs';
 

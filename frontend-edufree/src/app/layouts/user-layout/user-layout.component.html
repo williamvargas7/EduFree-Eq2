@@ -1,8 +1,8 @@
 <main class="container-fluid p-0">
    <nav class="fixed-top">
-      <div class="cls-sidebar-btn my-3 mx-2">
-         <a (click)="toggleSideBar()" class="btn btn-primary rounded-circle ">
-            <i class="bi bi-list p-0"></i>
+      <div class="cls-sidebar-btn m-1 p-1">
+         <a (click)="toggleSideBar()" class="btn cls-btn rounded-pill">
+            <i class="h3 bi bi-list"></i>
          </a>
       </div>
       <div div class="cls-navbar">
@@ -12,11 +12,11 @@
 
    <section class="d-flex flex-row">
 
-      <div class="cls-sidebar-app" [ngClass]="{'cls-animate-sidebar-open': openSideBar}">
+      <div class="cls-sidebar-app " [ngClass]="{'cls-animate-sidebar-close': closeSideBar}">
          <app-user-sidebar></app-user-sidebar>
       </div>
 
-      <div class="cls-body-app" [ngClass]="{'cls-body-app-sb-open': !openSideBar}">
+      <div class=".cls-body-app border border-primary container-fluid" [ngClass]="{'cls-body-app-sb-close container-fluid': !closeSideBar}">
          <router-outlet></router-outlet>
       </div>
    </section>

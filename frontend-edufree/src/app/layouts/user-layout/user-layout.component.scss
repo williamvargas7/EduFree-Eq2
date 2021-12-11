@@ -15,10 +15,20 @@
 }
 
 .cls-body-app {
-    width: 80%;
+    width: 100vh;
+    transform: translateX(18%);
+    -webkit-transform: translateX(18%);
+    -moz-transform: translateX(18%);
+    -ms-transform: translateX(18%);
+    -o-transform: translateX(18%);
 }
 
 .cls-sidebar-app {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
     transform: translateX(-100%);
     -webkit-transform: translateX(-100%);
     -moz-transform: translateX(-100%);
@@ -26,18 +36,13 @@
     -o-transform: translateX(-100%);
 }
 
-.cls-animate-sidebar-open {
+.cls-animate-sidebar-close {
     animation: cls-ani 0.3s linear forwards;
     -webkit-animation: cls-ani 0.3s linear forwards;
 }
 
-.cls-body-app-sb-open{
+.cls-body-app-sb-close{
     width: 100%;
-    transform: translateX(0%);
-    -webkit-transform: translateX(-15%);
-    -moz-transform: translateX(-15%);
-    -ms-transform: translateX(-15%);
-    -o-transform: translateX(-15%);
 }
 
 @-webkit-keyframes cls-ani {
@@ -77,4 +82,10 @@
 .cls-sidebar-btn {
     position: absolute;
     z-index: 9999;
+
+    .cls-btn{
+        background: transparent;
+        border: none;
+        color: #f25244;
+    }
 }
