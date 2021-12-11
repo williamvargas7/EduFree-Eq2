@@ -5,18 +5,20 @@
             <i class="h3 bi bi-list"></i>
          </a>
       </div>
-      <div div class="cls-navbar">
+      <div div>
          <app-user-navbar></app-user-navbar>
       </div>
    </nav>
 
-   <section class="d-flex flex-row">
+   <section class="d-flex flex-row border border-primary">
 
-      <div class="cls-sidebar-app " [ngClass]="{'cls-animate-sidebar-close': closeSideBar}">
+      <div class="cls-sidebar-app mt-5 border border-warning"
+      [ngClass]="{'cls-animate-sidebar-close': closeSideBar}">
          <app-user-sidebar></app-user-sidebar>
       </div>
 
-      <div class=".cls-body-app border border-primary container-fluid" [ngClass]="{'cls-body-app-sb-close container-fluid': !closeSideBar}">
+      <div class=".cls-body-app border border-danger container-fluid"
+      [ngClass]="{'cls-body-app-sb-close container-fluid': !closeSideBar}">
          <router-outlet></router-outlet>
       </div>
    </section>

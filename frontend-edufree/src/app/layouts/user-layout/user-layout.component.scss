@@ -1,22 +1,23 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
 
 .cls-logo {
     width: 30px;
     height: 30px;
 }
 
-.cls-navbar {
-    z-index: -9999;
-}
-
 .cls-footer {
     bottom: 0;
     width: 100%;
+    width: 100%;
+    z-index: 1;
 }
+
 
 .cls-body-app {
     width: 100vh;
     -webkit-transform: translateX(18%);
+    -ms-transform: translateX(18%);
     -ms-transform: translateX(18%);
     transform: translateX(18%);
 }
