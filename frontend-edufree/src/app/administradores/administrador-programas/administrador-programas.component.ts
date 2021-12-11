@@ -43,7 +43,7 @@ export class AdministradorProgramasComponent implements OnInit, OnDestroy {
       costo: ['', Validators.required],
       imagen: ['', Validators.required],
       descripcion: ['', Validators.required],
-      fechaCreacion: ['', Validators.required]
+      fechaCreacion: ['', Validators.required],
     });
   }
 
@@ -84,7 +84,7 @@ export class AdministradorProgramasComponent implements OnInit, OnDestroy {
 
   postPrograma() {
     const programaNuevo = this.formProgramas.getRawValue();
-    // programaNuevo['fechaCreacion'] = new Date();
+    programaNuevo['fechaCreacion'] = new Date();
     programaNuevo['cantidadCreditos'] = parseInt(programaNuevo['cantidadCreditos']);
     programaNuevo['cantidadSemestres'] = parseInt(programaNuevo['cantidadCreditos']);
     programaNuevo['costo'] = parseInt(programaNuevo['costo']);

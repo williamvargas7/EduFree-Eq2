@@ -150,7 +150,7 @@ export class AdministradorAsignaturasComponent implements OnInit, OnDestroy {
           asignaturaActualizada
         ).subscribe(
           {
-            next: (data) => {
+            next: () => {
               Swal.fire(
                 'Programa editado',
                 `El programa ${asignaturaActualizada.nombreAsignatura} se ha editado correctamente`,
