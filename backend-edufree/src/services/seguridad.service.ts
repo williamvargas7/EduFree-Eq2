@@ -8,6 +8,9 @@ const jwt = require('jsonwebtoken');
 
 @injectable({scope: BindingScope.TRANSIENT})
 export class SeguridadService {
+  
+  claveSecreta = '2&%$##$%&%$&%';
+
   constructor(@repository(UsuarioRepository) public Usuariorepositorio: UsuarioRepository)   {}
   // Validar que el usuario exista
   //Generar un Token
@@ -44,7 +47,7 @@ export class SeguridadService {
           nombre:usuario.nombresUsuario,
           correo:usuario.correoElectronico
         }
-      }, '2&%$##$%&%$&%');
+      }, this.claveSecreta);
       return token;
   }
 
