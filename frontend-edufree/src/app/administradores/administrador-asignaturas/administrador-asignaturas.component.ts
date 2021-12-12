@@ -1,8 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { BackendService } from 'src/app/services/backend.service';
 import Swal from 'sweetalert2';
-import { Subject } from 'rxjs';
 
 interface Asignatura {
   nombreAsignatura: string;
@@ -23,15 +22,13 @@ interface Programa {
   templateUrl: './administrador-asignaturas.component.html',
   styleUrls: ['./administrador-asignaturas.component.scss']
 })
-export class AdministradorAsignaturasComponent implements OnInit, OnDestroy {
+export class AdministradorAsignaturasComponent implements OnInit {
 
   listaAsignaturas: Asignatura[] = [];
   listaProgramas: Programa[] = [];
   formAsignaturas: any;
   modoCrud = 'crear';
   idAsignatura!: '';
-  dtOptions: DataTables.Settings = {};
-  dtTrigger: Subject<any> = new Subject();
 
   constructor(
     private fb: FormBuilder,
@@ -49,23 +46,6 @@ export class AdministradorAsignaturasComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 2,
-      language: {
-        url: '//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json'
-      },
-      columnDefs: [
-        {
-          className: 'dt-center',
-          targets: '_all'
-        }
-      ]
-    };
-  }
-
-  ngOnDestroy(): void {
-    this.dtTrigger.unsubscribe();
   }
 
   getAsignaturas() {
@@ -73,7 +53,6 @@ export class AdministradorAsignaturasComponent implements OnInit, OnDestroy {
       {
         next: (data) => {
           this.listaAsignaturas = data;
-          this.dtTrigger.next(data);
         },
         error: (err) => {
           console.log(err);

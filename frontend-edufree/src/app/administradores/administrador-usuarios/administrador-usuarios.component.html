@@ -12,7 +12,7 @@
         <div class="col-5 justify-content-center">
             <select class="custom-select cls-select p-1 rounded-pill" formControlName="rol">
                 <option class="hidden" selected disabled>Elige el Rol ... </option>
-                <option *ngFor="let i of listaRoles" value="{{i.id}}">{{i.nombrePerfil}}</option>
+                <option *ngFor="let r of listaRoles">{{r.nombrePerfil}}</option>
             </select>
         </div>
     </section>
@@ -104,10 +104,9 @@
     </section>
 
     <section class="m-0 p-0">
-        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
-            class="table-responsive row-fluid hover display">
+        <table class="table table-responsive-md table-hover">
 
-            <thead class="">
+            <thead class="thead-dark">
                 <tr>
                     <th class="text-center">Nombres</th>
                     <th class="text-center">Apellidos</th>
@@ -117,6 +116,7 @@
                     <th class="text-center">Programa Acádemico</th>
                     <th class="text-center">Telefono</th>
                     <th class="text-center">Rol</th>
+                    <th class="text-center">PerfilId</th>
                     <!-- <th class="text-center">Usuario</th>
                     <th class="text-center">Contraseña</th>
                     <th class="text-center">Fecha de Creacion</th> -->
@@ -131,9 +131,10 @@
                     <td scope="col"> {{u.tipoIdentificacion}} </td>
                     <td scope="col"> {{u.noIdentificacion}} </td>
                     <td scope="col"> {{u.correoElectronico}} </td>
-                    <td scope="col"> {{u.programaAcademicoId}}</td>
+                    <td scope="col" value="programa"> {{u.programaAcademicoId}}</td>
                     <td scope="col"> {{u.telefono}} </td>
                     <td scope="col"> {{u.rol}} </td>
+                    <td scope="col"> {{u.perfilId}} </td>
                     <!-- <td scope="col"> {{u.usuario}} </td>
                     <td scope="col"> {{u.contrasenia}} </td>
                     <td scope="col"> {{u.fechaCreacion}} </td> -->
