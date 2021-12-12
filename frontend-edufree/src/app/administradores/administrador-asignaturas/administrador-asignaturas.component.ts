@@ -51,11 +51,17 @@ export class AdministradorAsignaturasComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 15,
+      pageLength: 2,
       language: {
-        url: "//cdn.datatables.net/plug-ins/1.11.3/i18n/es-mx.json"
-      }
-    }
+        url: '//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json'
+      },
+      columnDefs: [
+        {
+          className: 'dt-center',
+          targets: '_all'
+        }
+      ]
+    };
   }
 
   ngOnDestroy(): void {
@@ -97,6 +103,7 @@ export class AdministradorAsignaturasComponent implements OnInit, OnDestroy {
 
   postAsignaturas() {
     const asignaturaNueva = this.formAsignaturas.getRawValue();
+    asignaturaNueva['fechaCreacion'] = new Date();
     asignaturaNueva['cantidadCreditos'] = parseInt(asignaturaNueva['cantidadCreditos']);
 
     this.backend.postRequest(
@@ -110,14 +117,17 @@ export class AdministradorAsignaturasComponent implements OnInit, OnDestroy {
             'La asignatura se ha creado correctamente',
             'success'
           );
-          this.getAsignaturas();
-          this.limpiarFormulario();
         },
         error: (err) => {
-          console.log(err);
+          Swal.fire(
+            'Error',
+            `La asignatura ${asignaturaNueva.nombreAsignatura} no ha sido creada`,
+            'error'
+          );
         },
         complete: () => {
-          console.log('Completado');
+          this.getAsignaturas();
+          this.limpiarFormulario();
         }
       }
     );
@@ -152,18 +162,21 @@ export class AdministradorAsignaturasComponent implements OnInit, OnDestroy {
           {
             next: () => {
               Swal.fire(
-                'Programa editado',
-                `El programa ${asignaturaActualizada.nombreAsignatura} se ha editado correctamente`,
+                'Asignatura creada',
+                'La asignatura se ha actualizado correctamente',
                 'success'
               );
-              this.getAsignaturas();
-              this.limpiarFormulario();
             },
             error: (err) => {
-              console.log(err);
+              Swal.fire(
+                'Error',
+                `La asignatura ${asignaturaActualizada.nombreAsignatura} no ha sido actualizada`,
+                'error'
+              );
             },
             complete: () => {
-              console.log('Completado');
+              this.getAsignaturas();
+              this.limpiarFormulario();
             }
           }
         );
@@ -192,14 +205,17 @@ export class AdministradorAsignaturasComponent implements OnInit, OnDestroy {
                 '¡Eliminado!',
                 `La asignatura ${asignatura.nombreAsignatura} - ${asignatura.codigoAsignatura} ha sido eliminado correctamente`,
                 'success'
-              )
-              this.getAsignaturas();
+              );
             },
             error: (err) => {
-              console.log(err);
+              Swal.fire(
+                '¡Eliminado!',
+                `La asignatura ${asignatura.nombreAsignatura} - ${asignatura.codigoAsignatura} no ha sido eliminado`,
+                'success'
+              )
             },
             complete: () => {
-              console.log('Completado');
+              this.getAsignaturas();
             }
           }
         );

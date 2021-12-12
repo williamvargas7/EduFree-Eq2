@@ -1,1 +1,111 @@
-<p>administrador-grupos works!</p>
+<main class="m-5 pt-1">
+
+    <section class="my-5 mt-5 row justify-content-md-left" [formGroup]="formGrupos">
+        <header class="col-10">
+            <h1 class="h1">Administrador de Grupos</h1>
+        </header>
+        <div class="col-2 justify-content-center">
+            <button type="button" class="btn btn-block cls-btnAgregar rounded-pill shadow-sm" (click)="crear()">
+                <i class="h2 bi bi-plus-square"></i>
+            </button>
+        </div>
+    </section>
+
+    <section class="mb-5">
+        <form [formGroup]="formGrupos">
+            <div class="row register-form">
+
+                <div class="col-md-6">
+                    <div class="form-group py-1">
+                        <input type="text" class="form-control rounded-pill" formControlName="id" readonly
+                            placeholder="Id"/>
+                    </div>
+                    <div class="form-group py-1">
+                        <input type="text" class="form-control rounded-pill" formControlName="capacidadEstudiantes"
+                            placeholder="Capacidad Estudiantes" required />
+                    </div>
+                    <div class="form-group py-1">
+                        <select class="form-select rounded-pill" placeholder="Componente" required
+                            formControlName="docenteId">
+                            <option value="" disabled selected hidden>Docente</option>
+                            <option *ngFor="let d of listaDocentes" value="{{d.id}}">{{d.noIdentificacion}} - {{d.apellidosUsuario}}, {{d.nombresUsuario}} [{{d.rol}}]</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group py-1">
+                        <input type="text" class="form-control rounded-pill" formControlName="codigoGrupo"
+                            placeholder="Código Grupo" required />
+                    </div>
+                    <div class="form-group py-1">
+                        <select class="form-select rounded-pill" required placeholder="Asignatura"
+                            formControlName="asignaturaId">
+                            <option value="" disabled selected hidden>Programa Acádemico</option>
+                            <option *ngFor="let a of listaAsignaturas" value="{{a.id}}">
+                                {{a.codigoAsignatura}} - {{a.nombreAsignatura}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group py-1">
+                        <input readonly type="text" class="form-control rounded-pill" formControlName="fechaCreacion"
+                            placeholder="Fecha Creación" />
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row justify-content-center py-3">
+                <button *ngIf="modoCrud == 'crear'" (click)="postGrupo()"
+                    class="btn btn-outline-success rounded-pill mx-1 cls-button-1">
+                    Registrar Programa
+                </button>
+                <button *ngIf="modoCrud == 'actualizar'" (click)="patchGrupo()"
+                    class="btn btn-outline-success rounded-pill mx-1 cls-button-1">
+                    Editar Programa
+                </button>
+                <button (click)="limpiarFormulario()" class="btn btn-outline-danger rounded-pill mx-1 cls-button-1">
+                    Limpiar
+                </button>
+            </div>
+        </form>
+    </section>
+
+    <section class="m-0 p-0">
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+            class="table-responsive row-fluid hover display">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Código</th>
+                    <th>Componente</th>
+                    <th>Créditos</th>
+                    <th>Programa Académico</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let g of listaGrupos">
+                    <td scope="col">{{g.codigoGrupo}}</td>
+                    <td scope="col">{{g.capacidadEstudiantes}}</td>
+                    <td scope="col">{{g.docenteId}}</td>
+                    <td scope="col">{{g.asignaturaId}}</td>
+                    <td scope="col">{{g.fechaCreacion}}</td>
+                    <td scope="col" class="text-center">
+                        <a type="button" class="mx-1 text-warning" (click)="actualizar(g)">
+                            <i class="h4 bi bi-pencil-square"></i>
+                        </a>
+                        <a type="button" class="mx-1 text-danger" (click)="deleteGrupo(g)">
+                            <i class="h4 bi bi-trash"></i>
+                        </a>
+                        <a type="button" class="mx-1 text-info">
+                            <i class="h4 bi bi-book"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+</main>

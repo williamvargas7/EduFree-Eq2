@@ -12,7 +12,7 @@
         <div class="col-5 justify-content-center">
             <select class="custom-select cls-select p-1 rounded-pill" formControlName="rol">
                 <option class="hidden" selected disabled>Elige el Rol ... </option>
-                <option *ngFor="let i of listaRoles" value="{{i.nombrePerfil}}">{{i.nombrePerfil}}</option>
+                <option *ngFor="let r of listaRoles" value="{{r.nombrePerfil}}">{{r.nombrePerfil}}</option>
             </select>
         </div>
     </section>
@@ -105,7 +105,7 @@
 
     <section class="m-0 p-0">
         <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
-            class="table-responsive row hover">
+            class="table-responsive row-fluid hover display">
 
             <thead class="">
                 <tr>
@@ -118,31 +118,31 @@
                     <th class="text-center">Telefono</th>
                     <th class="text-center">Rol</th>
                     <!-- <th class="text-center">Usuario</th>
-                    <th class="text-center">Contraseña</th> 
-                    <th class="text-center">Fecha de Creacion</th>-->
+                    <th class="text-center">Contraseña</th>
+                    <th class="text-center">Fecha de Creacion</th> -->
                     <th class="text-center">Acciones</th>
                 </tr>
             </thead>
- 
-            <tbody>
-                <tr *ngFor="let list of listaUsuarios">
-                    <td scope="col"> {{list.nombresUsuario}} </td>
-                    <td scope="col"> {{list.apellidosUsuario}} </td>
-                    <td scope="col"> {{list.tipoIdentificacion}} </td>
-                    <td scope="col"> {{list.noIdentificacion}} </td>
-                    <td scope="col"> {{list.correoElectronico}} </td>
-                    <td scope="col"> {{list.programaAcademicoId}} </td>
-                    <td scope="col"> {{list.telefono}} </td>
-                    <td scope="col"> {{list.rol}} </td>
-                    <!-- <td scope="col"> {{list.usuario}} </td>
-                    <td scope="col"> {{list.contrasenia}} </td> 
-                    <td scope="col"> {{list.fechaCreacion}} </td>-->
-                    <td scope="col">
-                        <a type="button" class="btn btn-outline-dark me-1 rounded-pill"
-                            (click)="IniciarEdicion(list)"><i class="bi bi-pencil-square "></i></a>
 
-                        <a type="button" class="btn btn-outline-danger me-1 rounded-pill" (click)="EmininarUsuario(list)"><i
-                                class="bi bi-trash"></i></a>
+            <tbody>
+                <tr *ngFor="let u of listaUsuarios">
+                    <td scope="col"> {{u.nombresUsuario}} </td>
+                    <td scope="col"> {{u.apellidosUsuario}} </td>
+                    <td scope="col"> {{u.tipoIdentificacion}} </td>
+                    <td scope="col"> {{u.noIdentificacion}} </td>
+                    <td scope="col"> {{u.correoElectronico}} </td>
+                    <td scope="col"> {{u.programaAcademicoId}}</td>
+                    <td scope="col"> {{u.telefono}} </td>
+                    <td scope="col"> {{u.rol}} </td>
+                    <!-- <td scope="col"> {{u.usuario}} </td>
+                    <td scope="col"> {{u.contrasenia}} </td>
+                    <td scope="col"> {{u.fechaCreacion}} </td> -->
+                    <td scope="col">
+                        <a type="button" class="mx-1 text-warning"
+                            (click)="IniciarEdicion(u)"><i class="h4 bi bi-pencil-square "></i></a>
+
+                        <a type="button" class="mx-1 text-danger" (click)="EmininarUsuario(u)"><i
+                                class="h4 bi bi-trash"></i></a>
                     </td>
                 </tr>
 

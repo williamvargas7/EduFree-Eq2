@@ -111,22 +111,22 @@
          </thead>
 
          <tbody>
-            <tr *ngFor="let list of listaProgramas">
-               <td scope="col">{{list.nombrePrograma}}</td>
-               <td scope="col">{{list.codigoPrograma}}</td>
-               <td scope="col">{{list.cantidadSemestres}}</td>
-               <td scope="col">{{list.cantidadCreditos}}</td>
-               <td scope="col">{{list.nivelAcademico}}</td>
-               <td scope="col">{{list.modalidad}}</td>
-               <td scope="col">
-                  <a type="button" class="btn btn-outline-warning me-1 rounded-pill" (click)="actualizar(list)">
-                     <i class="bi bi-pencil-square"></i>
+            <tr *ngFor="let p of listaProgramas">
+               <td scope="col">{{p.nombrePrograma}}</td>
+               <td scope="col">{{p.codigoPrograma}}</td>
+               <td scope="col">{{p.cantidadSemestres}}</td>
+               <td scope="col">{{p.cantidadCreditos}}</td>
+               <td scope="col">{{p.nivelAcademico}}</td>
+               <td scope="col">{{p.modalidad}}</td>
+               <td scope="col" class="text-center">
+                  <a type="button" class="mx-1 text-warning" (click)="actualizar(p)">
+                     <i class="h4 bi bi-pencil-square"></i>
                   </a>
-                  <a type="button" class="btn btn-outline-danger me-1 rounded-pill" (click)="deletePrograma(list)">
-                     <i class="bi bi-trash"></i>
+                  <a type="button" class="mx-1 text-danger" (click)="deletePrograma(p)">
+                     <i class="h4 bi bi-trash"></i>
                   </a>
-                  <a type="button" class="btn btn-outline-dark me-1 rounded-pill">
-                     <i class="bi bi-book"></i>
+                  <a type="button" class="mx-1 text-info">
+                     <i class="h4 bi bi-book"></i>
                   </a>
                </td>
             </tr>

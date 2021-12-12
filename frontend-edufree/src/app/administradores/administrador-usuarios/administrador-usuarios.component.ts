@@ -73,9 +73,9 @@ export class AdministradorUsuariosComponent implements OnInit {
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 15,
+      pageLength: 2,
       language: {
-        url: '//cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json',
+        url: '//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json'
       }
     };
   }
@@ -135,11 +135,24 @@ export class AdministradorUsuariosComponent implements OnInit {
     const contraseniaEncriptada = Md5.hashStr(
       this.formUsuario.controls.contrasenia.value
     );
-    usuarioNuevo.contrasenia = contraseniaEncriptada;
-    usuarioNuevo.foto =
-      'https://cdn-icons-png.flaticon.com/512/2784/2784445.png';
+    usuarioNuevo['fechaCreacion'] = new Date();
 
-    usuarioNuevo.perfilId = usuarioNuevo.rol;
+    if (usuarioNuevo['rol'] === 'Estudiante' || usuarioNuevo['rol'] === 'Docente') {
+      usuarioNuevo['programaAcademicoId'] = this.formUsuario.controls.programaAcademicoId.value;
+      usuarioNuevo['contrasenia'] = contraseniaEncriptada;
+      usuarioNuevo['perfilId'] = usuarioNuevo.rol.id;
+
+      if (usuarioNuevo['rol'] === 'Estudiante') {
+        usuarioNuevo['foto'] = 'https://cdn-icons.flaticon.com/png/512/3152/premium/3152937.png?token=exp=1639234571~hmac=77b14c009018da439e2789344e8f0685';
+      } else {
+        usuarioNuevo['foto'] = 'https://cdn-icons-png.flaticon.com/512/2784/2784445.png';
+      }
+    } else {
+      usuarioNuevo['programaAcademicoId'] = 'No Aplica';
+      usuarioNuevo['foto'] = 'https://cdn-icons-png.flaticon.com/512/2291/2291833.png';
+      usuarioNuevo['contrasenia'] = contraseniaEncriptada;
+      usuarioNuevo['perfilId'] = usuarioNuevo.rol.id;
+    }
 
     this.Backend.postRequest(
       'usuarios',
@@ -169,7 +182,24 @@ export class AdministradorUsuariosComponent implements OnInit {
     const contraseniaEncriptada = Md5.hashStr(
       this.formUsuario.controls.contrasenia.value
     );
-    editarUsuario.contrasenia = contraseniaEncriptada;
+    editarUsuario['fechaCreacion'] = new Date();
+
+    if (editarUsuario['rol'] === 'Estudiante' || editarUsuario['rol'] === 'Docente') {
+      editarUsuario['programaAcademicoId'] = this.formUsuario.controls.programaAcademicoId.value;
+      editarUsuario['contrasenia'] = contraseniaEncriptada;
+      editarUsuario['perfilId'] = editarUsuario.rol.id;
+
+      if (editarUsuario['rol'] === 'Estudiante') {
+        editarUsuario['foto'] = 'https://cdn-icons.flaticon.com/png/512/3152/premium/3152937.png?token=exp=1639234571~hmac=77b14c009018da439e2789344e8f0685';
+      } else {
+        editarUsuario['foto'] = 'https://cdn-icons-png.flaticon.com/512/2784/2784445.png';
+      }
+    } else {
+      editarUsuario['programaAcademicoId'] = 'No Aplica';
+      editarUsuario['foto'] = 'https://cdn-icons-png.flaticon.com/512/2291/2291833.png';
+      editarUsuario['contrasenia'] = contraseniaEncriptada;
+      editarUsuario['perfilId'] = editarUsuario.rol.id;
+    }
 
     this.Backend.patchRequest(
       'usuarios',

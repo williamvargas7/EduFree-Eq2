@@ -50,11 +50,17 @@ export class AdministradorProgramasComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 15,
+      pageLength: 2,
       language: {
-        url: "//cdn.datatables.net/plug-ins/1.11.3/i18n/es-mx.json"
-      }
-    }
+        url: '//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json'
+      },
+      columnDefs: [
+        {
+          className: 'dt-center',
+          targets: '_all'
+        }
+      ]
+    };
   }
 
   ngOnDestroy(): void {
@@ -91,7 +97,7 @@ export class AdministradorProgramasComponent implements OnInit, OnDestroy {
 
 
     this.backend.postRequest(
-      'programas-academicos', 
+      'programas-academicos',
       JSON.stringify(programaNuevo)
     ).subscribe(
       {
@@ -177,7 +183,7 @@ export class AdministradorProgramasComponent implements OnInit, OnDestroy {
     }).then((result) => {
       if (result.isConfirmed) {
         this.backend.deleteRequest(
-          'programas-academicos', 
+          'programas-academicos',
           programa.id
         ).subscribe(
           {
