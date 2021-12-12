@@ -9,6 +9,7 @@ import {
 import { Md5 } from 'ts-md5/dist/md5';
 import { GlobalService } from '../services/global.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 interface credenciales {
   usuario: string;
@@ -60,6 +61,11 @@ export class LoginComponent implements OnInit {
         console.log(respuesta);
         if (respuesta && respuesta.data) {
           if (respuesta.tk) {
+            Swal.fire(
+              '!!!!!',
+              'Inicio de sesion correcto',
+              'success'
+            );
             this.backend.token = respuesta.tk;
             localStorage.setItem('tk', respuesta.tk);
             localStorage.setItem(
@@ -70,7 +76,13 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/administradores/administrador-usuarios']);
           }
           alert('Credenciales correctas!!!!');
+
         }else{
+          Swal.fire(
+            '!!!!!',
+            'Credenciales incorrectas, verifiquelas y vuelva a ingresar',
+            'error'
+          );
           alert('Credenciales incorrectas, verifiquelas y vuelva a ingresar');
         }
 

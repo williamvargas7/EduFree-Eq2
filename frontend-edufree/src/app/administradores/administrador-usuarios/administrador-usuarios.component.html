@@ -12,7 +12,7 @@
         <div class="col-5 justify-content-center">
             <select class="custom-select cls-select p-1 rounded-pill" formControlName="rol">
                 <option class="hidden" selected disabled>Elige el Rol ... </option>
-                <option *ngFor="let r of listaRoles" value="{{r.nombrePerfil}}">{{r.nombrePerfil}}</option>
+                <option *ngFor="let i of listaRoles" value="{{i.id}}">{{i.nombrePerfil}}</option>
             </select>
         </div>
     </section>
