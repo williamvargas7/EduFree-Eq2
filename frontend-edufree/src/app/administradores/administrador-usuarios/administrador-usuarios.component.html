@@ -12,7 +12,7 @@
         <div class="col-5 justify-content-center">
             <select class="custom-select cls-select p-1 rounded-pill" formControlName="rol">
                 <option class="hidden" selected disabled>Elige el Rol ... </option>
-                <option *ngFor="let i of listaRoles" value="{{i.nombrePerfil}}">{{i.nombrePerfil}}</option>
+                <option *ngFor="let i of listaRoles" value="{{i.id}}">{{i.nombrePerfil}}</option>
             </select>
         </div>
     </section>
@@ -118,12 +118,12 @@
                     <th class="text-center">Telefono</th>
                     <th class="text-center">Rol</th>
                     <!-- <th class="text-center">Usuario</th>
-                    <th class="text-center">Contraseña</th> 
+                    <th class="text-center">Contraseña</th>
                     <th class="text-center">Fecha de Creacion</th>-->
                     <th class="text-center">Acciones</th>
                 </tr>
             </thead>
- 
+
             <tbody>
                 <tr *ngFor="let list of listaUsuarios">
                     <td scope="col"> {{list.nombresUsuario}} </td>
@@ -135,7 +135,7 @@
                     <td scope="col"> {{list.telefono}} </td>
                     <td scope="col"> {{list.rol}} </td>
                     <!-- <td scope="col"> {{list.usuario}} </td>
-                    <td scope="col"> {{list.contrasenia}} </td> 
+                    <td scope="col"> {{list.contrasenia}} </td>
                     <td scope="col"> {{list.fechaCreacion}} </td>-->
                     <td scope="col">
                         <a type="button" class="btn btn-outline-dark me-1 rounded-pill"
