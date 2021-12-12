@@ -1,5 +1,5 @@
-import {filter} from 'rxjs/operators';
-import { Component, OnInit } from '@angular/core';
+import { filter } from 'rxjs/operators';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-user-layout',
@@ -8,16 +8,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserLayoutComponent implements OnInit {
 
-  closeSideBar: boolean = true;
+  sidebarIsOpen: boolean = true;
 
-  constructor() { }
+  constructor(private renderer: Renderer2) { }
 
   ngOnInit(): void {
   }
 
-  toggleSideBar(): void {
-    this.closeSideBar = !this.closeSideBar;
+  ngAfterViewInit(): void {
+    this.animateSideBar();
   }
 
+  toggleSideBar(): void {
+    this.sidebarIsOpen = !this.sidebarIsOpen;
+    this.animateSideBar();
+
+  }
+
+  animateSideBar(): void {
+
+    const el = document.getElementById('idSidebar');
+    if (el) {
+      if (this.sidebarIsOpen) {
+        this.renderer.removeClass(el, 'cls-hidden');
+      } else {
+        this.renderer.addClass(el, 'cls-hidden');
+      }
+    }
+  }
 
 }

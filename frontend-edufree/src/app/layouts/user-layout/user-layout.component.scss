@@ -1,5 +1,4 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
-@import "~bootstrap-icons/font/bootstrap-icons.css";
 
 .cls-logo {
     width: 30px;
@@ -13,19 +12,18 @@
     z-index: 1;
 }
 
-
 .cls-body-app {
-    width: 100vh;
-    -webkit-transform: translateX(18%);
-    -ms-transform: translateX(18%);
-    -ms-transform: translateX(18%);
-    transform: translateX(18%);
+    width: 100%;
+}
+
+.cls-body-app-sidebar-open {
+    width: calc(100% - 350px);
 }
 
 .cls-sidebar-app {
-    width: 250px;
+    width: 350px;
     height: 100vh;
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     -webkit-transform: translateX(-100%);
@@ -33,13 +31,17 @@
     transform: translateX(-100%);
 }
 
-.cls-animate-sidebar-close {
+.cls-animate-sidebar-open {
     animation: cls-ani 0.3s linear forwards;
     -webkit-animation: cls-ani 0.3s linear forwards;
 }
 
 .cls-body-app-sb-close {
     width: 100%;
+}
+
+.cls-hidden {
+    display: none !important;
 }
 
 @-webkit-keyframes cls-ani {
@@ -58,6 +60,7 @@
         -webkit-transform: translateX(-100%);
         transform: translateX(-100%);
     }
+
     100% {
         -webkit-transform: translateX(0%);
         transform: translateX(0%);

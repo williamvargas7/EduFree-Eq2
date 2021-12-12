@@ -1,4 +1,3 @@
-import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { BackendService } from 'src/app/services/backend.service';

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef  } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { BackendService } from 'src/app/services/backend.service';
 import Swal from 'sweetalert2';
@@ -32,7 +32,7 @@ export class AdministradorAsignaturasComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private backend: BackendService
+    private backend: BackendService,
   ) {
     this.formAsignaturas = this.fb.group({
       nombreAsignatura: ['', Validators.required],

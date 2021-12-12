@@ -1,7 +1,7 @@
-.cls-sidebar{
-    width: 250px;
+.cls-sidebar-component{
+    width: inherit;
     height: 100vh;
-    position: fixed;
+    position: relative;
     top: 0;
-    left: 0;
+    left: 0
 }
