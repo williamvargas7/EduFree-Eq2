@@ -25,7 +25,10 @@ export class AutorizacionGuard implements CanActivate, CanActivateChild {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (this.backend.token) {
+
+    const tk = localStorage.getItem('tk');
+
+    if (tk) {
       return true;
     } else {
       Swal.fire(
