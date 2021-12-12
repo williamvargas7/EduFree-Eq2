@@ -40,13 +40,17 @@ const routes: Routes = [
       },
       {
         path: 'administrador-asignaturas',
+        canActivate: [AutorizacionGuard],
         component: AdministradorAsignaturasComponent,
       },
       {
         path: 'administrador-calificaciones',
+        canActivate: [AutorizacionGuard],
         component: AdministradorCalificacionesComponent,
       },
-      { path: 'administrador-grupos', component: AdministradorGruposComponent },
+      { path: 'administrador-grupos',
+      canActivate: [AutorizacionGuard],
+      component: AdministradorGruposComponent },
     ],
   },
 ];
