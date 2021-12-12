@@ -45,7 +45,7 @@ export class AdministradorCalificacionesComponent implements OnInit {
       fechaCreacion: ['', Validators.required]
     });
   }
-  ) { }
+  
 
   ngOnInit(): void {
   }
