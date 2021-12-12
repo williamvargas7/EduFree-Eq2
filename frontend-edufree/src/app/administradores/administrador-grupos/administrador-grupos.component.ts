@@ -1,3 +1,4 @@
+import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { BackendService } from 'src/app/services/backend.service';
@@ -49,12 +50,15 @@ export class AdministradorGruposComponent implements OnInit {
       docenteId: ['', Validators.required],
       asignaturaId: ['', Validators.required]
     });
+    this.getGrupos();
+    this.getAsignaturas();
+    this.getDocentes();
   }
 
   ngOnInit(): void {
   }
 
-  getGrupos() {
+  getGrupos() { 
     this.backend.get('/grupos').subscribe(
       {
         next: (data) => {
@@ -87,7 +91,9 @@ export class AdministradorGruposComponent implements OnInit {
   }
 
   getDocentes() {
-    this.backend.get('/usuarios?rol=Docente').subscribe(
+    const filter = {"where":{"rol":"Docente"}};
+    
+    this.backend.getRequestFilter('usuarios',JSON.stringify(filter)).subscribe(
       {
         next: (data) => {
           this.listaDocentes = data;
@@ -193,7 +199,7 @@ export class AdministradorGruposComponent implements OnInit {
   deleteGrupo(grupo: any): void {
     Swal.fire({
       title: '¿Está seguro?',
-      text: "El programa se eliminará y no podrá ser recuperado",
+      text: "El grupo se eliminará y no podrá ser recuperado",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#162440',
@@ -202,21 +208,21 @@ export class AdministradorGruposComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.backend.deleteRequest(
-          '/asignaturas',
+          '/grupos',
           grupo.id
         ).subscribe(
           {
             next: () => {
               Swal.fire(
                 '¡Eliminado!',
-                `La asignatura ${grupo.codigoGrupo} - ${grupo.docenteId} ha sido eliminado correctamente`,
+                `El grupo ${grupo.codigoGrupo} - ${grupo.docenteId} ha sido eliminado correctamente`,
                 'success'
               );
             },
             error: (err) => {
               Swal.fire(
                 '¡Eliminado!',
-                `La asignatura ${grupo.codigoGrupo} - ${grupo.docenteId} no ha sido eliminado`,
+                `El grupo ${grupo.codigoGrupo} - ${grupo.docenteId} no ha sido eliminado`,
                 'error'
               );
             },

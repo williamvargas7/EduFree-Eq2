@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -64,11 +64,19 @@ export class BackendService {
         headers: { 'content-type': 'application/json','Authorization': `Bearer ${this.token}`}
       }
     );
-
-
   }
 
+  getRequestFilter(controlador: string, filter: string): Observable<any> {
+    const params = new HttpParams().set('filter', filter);
 
+    return this.http.get(
+      this.rootUrl + '/' + controlador,
+      {
+        headers: { 'content-type': 'application/json','Authorization': `Bearer ${this.token}`},
+        params: params
+      }
+    );
+  }
 }
 
 export interface GroupUserAttr {
