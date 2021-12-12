@@ -40,7 +40,9 @@ export class LoginController {
         };
 
       } else {
-        throw new HttpErrors[401]('Datos no validos');
+        return {
+          tk: '',
+          data: ''};
       }
 
     } catch (error) {
