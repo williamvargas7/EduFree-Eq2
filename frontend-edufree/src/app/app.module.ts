@@ -22,6 +22,7 @@ import { AdministradorAsignaturasComponent } from './administradores/administrad
 import { AdministradorCalificacionesComponent } from './administradores/administrador-calificaciones/administrador-calificaciones.component';
 import { AdministradorGruposComponent } from './administradores/administrador-grupos/administrador-grupos.component';
 import { IndexComponent } from './index/index.component';
+import { UsuariosPorGrupoComponent } from './administradores/usuarios-por-grupo/usuarios-por-grupo.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { IndexComponent } from './index/index.component';
     AdministradorAsignaturasComponent,
     AdministradorGruposComponent,
     AdministradorCalificacionesComponent,
-    IndexComponent
+    IndexComponent,
+    UsuariosPorGrupoComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,8 @@ import { IndexComponent } from './index/index.component';
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxDatatableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

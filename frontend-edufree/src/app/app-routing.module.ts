@@ -8,10 +8,11 @@ import { AdministradorUsuariosComponent } from './administradores/administrador-
 import { AdministradorProgramasComponent } from './administradores/administrador-programas/administrador-programas.component';
 import { AdministradorAsignaturasComponent } from './administradores/administrador-asignaturas/administrador-asignaturas.component';
 import { AdministradorCalificacionesComponent } from './administradores/administrador-calificaciones/administrador-calificaciones.component';
-import { AdministradorGruposComponent } from './administradores/administrador-grupos/administrador-grupos.component';
 import { IndexComponent } from './index/index.component';
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
 import { AutorizacionGuard } from './guards/autorizacion.guard';
+import { UsuariosPorGrupoComponent } from './administradores/usuarios-por-grupo/usuarios-por-grupo.component';
+import { AdministradorGruposComponent } from './administradores/administrador-grupos/administrador-grupos.component';
 
 const routes: Routes = [
   {
@@ -44,13 +45,20 @@ const routes: Routes = [
         component: AdministradorAsignaturasComponent,
       },
       {
+        path: 'administrador-grupos',
+        canActivate: [AutorizacionGuard],
+        component: AdministradorGruposComponent,
+      },
+      {
         path: 'administrador-calificaciones',
         canActivate: [AutorizacionGuard],
         component: AdministradorCalificacionesComponent,
       },
-      { path: 'administrador-grupos',
-      canActivate: [AutorizacionGuard],
-      component: AdministradorGruposComponent },
+      {
+        path: 'usuarios-por-grupo',
+        canActivate: [AutorizacionGuard],
+        component: UsuariosPorGrupoComponent
+      },
     ],
   },
 ];

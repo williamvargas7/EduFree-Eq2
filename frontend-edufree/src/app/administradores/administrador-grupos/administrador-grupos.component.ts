@@ -57,7 +57,7 @@ export class AdministradorGruposComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getGrupos() { 
+  getGrupos() {
     this.backend.get('/grupos').subscribe(
       {
         next: (data) => {
@@ -91,7 +91,7 @@ export class AdministradorGruposComponent implements OnInit {
 
   getDocentes() {
     const filter = {"where":{"rol":"Docente"}};
-    
+
     this.backend.getRequestFilter('usuarios',JSON.stringify(filter)).subscribe(
       {
         next: (data) => {
