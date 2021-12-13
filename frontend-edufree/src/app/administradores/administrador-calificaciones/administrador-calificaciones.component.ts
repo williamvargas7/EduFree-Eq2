@@ -137,5 +137,10 @@ export class AdministradorCalificacionesComponent implements OnInit {
       }
     );
   }
+  isFormVisible = false;
+  
+  toggleIsFormVisible() {
+    this.isFormVisible = !this.isFormVisible;
+  }
 
 }
