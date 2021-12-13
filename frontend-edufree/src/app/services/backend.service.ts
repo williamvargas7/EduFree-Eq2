@@ -18,7 +18,8 @@ export class BackendService {
    }
 
   get(url: string): Observable<any> {
-    return this.http.get(this.rootUrl + url,
+    return this.http.get(
+      this.rootUrl + url,
       {
         headers: { 'Authorization': `Bearer ${this.token}` }
       }
@@ -35,7 +36,7 @@ export class BackendService {
   }
 
   patchRequest(controlador: string, id:string, datos: string): Observable<any> {
-    const url = this.rootUrl + '/' + controlador+'/'+id;
+    const url = `${this.rootUrl}/${controlador}/${id}`;
     return this.http.patch(
       url,
       datos, {
@@ -44,7 +45,7 @@ export class BackendService {
   }
 
   deleteRequest(controlador: string, id:string): Observable<any> {
-    const url = this.rootUrl + '/' + controlador+'/'+id;
+    const url = `${this.rootUrl}/${controlador}/${id}`;
     return this.http.delete(
       url,{
       headers: { 'content-type': 'application/json','Authorization': `Bearer ${this.token}`}
@@ -70,13 +71,14 @@ export class BackendService {
     const params = new HttpParams().set('filter', filter);
 
     return this.http.get(
-      this.rootUrl + '/' + controlador,
+      `${this.rootUrl}/${controlador}`,
       {
         headers: { 'content-type': 'application/json','Authorization': `Bearer ${this.token}`},
         params: params
       }
     );
   }
+
 }
 
 export interface GroupUserAttr {
